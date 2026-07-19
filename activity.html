@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Details - GVHSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #3f51b5; --accent: #ff4081; --bg-light: #f5f7fa; --surface: #ffffff; }
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: #333; }
+        
+        nav { background: var(--surface); padding: 15px 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; justify-content: flex-start; align-items: center; }
+        .back-btn { text-decoration: none; color: var(--primary); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .back-btn:hover { color: var(--accent); }
+
+        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .content-card { background: var(--surface); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 6px solid var(--primary); text-align: center; }
+        
+        h1 { color: var(--primary); font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; }
+        p { font-size: 1.1rem; line-height: 1.8; color: #555; }
+        
+        /* Image Display Classes */
+        .placeholder-img { width: 100%; height: 300px; background-color: #e8eaf6; border-radius: 8px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; color: #9fa8da; font-size: 1.2rem; }
+        .real-img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 30px; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Back to Main Website</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-card">
+            <img id="activity-img" class="real-img" src="" alt="Activity Image">
+            
+            <div id="placeholder" class="placeholder-img">No Image Uploaded</div>
+            
+            <h1 id="activity-title">Loading Activity...</h1>
+            <p id="activity-desc">Please wait while we fetch the details for this program.</p>
+        </div>
+    </div>
+
+    <script>
+        const activityData = {
+            'kites': { title: "Little Kites", desc: "Kerala Infrastructure and Technology for Education (KITE). This IT club empowers students in areas like programming, hardware, animation, and electronics." },
+            'jrc': { title: "Junior Red Cross (JRC)", desc: "The JRC promotes health, service, and friendship. Students learn first-aid, participate in community service, and develop a strong sense of empathy." },
+            'nature': { title: "Nature Club", desc: "Dedicated to environmental protection and awareness. Students engage in tree planting, eco-friendly campaigns, and preserve ecosystems." },
+            'ogt': { title: "On-the-Job Training (OGT)", desc: "A core part of our Vocational curriculum. OGT provides students with real-world industry experience, bridging the gap between theory and practice." },
+            'field': { title: "Field Visits", desc: "Taking education beyond the classroom walls. We organize regular educational tours to industries and institutions for practical insights." },
+            'yip': { title: "Young Innovators Programme (YIP)", desc: "An initiative to empower young minds to innovate. Students are encouraged to identify problems and develop practical solutions." },
+            'nss': { title: "National Service Scheme (NSS)", desc: "'Not Me But You.' The NSS develops student personality through community service, social work, camps, and leadership training." }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityId = urlParams.get('id');
+
+        if (activityId && activityData[activityId]) {
+            // Set text content
+            document.getElementById('activity-title').innerText = activityData[activityId].title;
+            document.getElementById('activity-desc').innerText = activityData[activityId].desc;
+
+            // Check if there is a saved image for this activity from the Admin panel
+            const savedImage = localStorage.getItem(activityId + '-img');
+            const imgElement = document.getElementById('activity-img');
+            const placeholderElement = document.getElementById('placeholder');
+
+            // If an image URL exists, show the image and hide the placeholder
+            if (savedImage && savedImage.trim() !== "") {
+                imgElement.src = savedImage;
+                imgElement.style.display = 'block';
+                placeholderElement.style.display = 'none';
+            }
+
+        } else {
+            document.getElementById('activity-title').innerText = "Activity Not Found";
+            document.getElementById('activity-desc').innerText = "Sorry, we couldn't find the details for this specific program.";
+        }
+    </script>
+</body>
+</html>

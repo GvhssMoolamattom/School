@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GVHSS Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #f4f9f9; margin: 0; padding: 0; color: #333; }
+        header { background: #005c97; color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logout-btn { background: #ff4757; color: white; text-decoration: none; padding: 8px 15px; border-radius: 5px; font-size: 14px; }
+        
+        .dashboard-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .edit-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid #00bf72; }
+        
+        h3 { margin-top: 0; color: #005c97; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        label { display: block; margin: 15px 0 5px; font-weight: 600; font-size: 14px; }
+        textarea, input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        textarea { height: 80px; }
+        
+        .save-btn { background: #00bf72; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 50px; }
+        .save-btn:hover { background: #009e5d; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>⚙️ Admin Dashboard</h2>
+        <a href="index.html" class="logout-btn">Log Out</a>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <div class="edit-section">
+            <h3>📢 Manage Notices (Use HTML &lt;li&gt; tags)</h3>
+            <label>High School Notices:</label>
+            <textarea id="hs-input"></textarea>
+            
+            <label>VHSS Notices:</label>
+            <textarea id="vhss-input"></textarea>
+        </div>
+
+        <div class="edit-section">
+            <h3>📝 Edit Main Page Content</h3>
+            <label>About Us Text:</label>
+            <textarea id="about-input" style="height: 120px;"></textarea>
+            
+            <label>Contact Email:</label>
+            <input type="text" id="email-input">
+            
+            <label>Contact Phone:</label>
+            <input type="text" id="phone-input">
+        </div>
+
+        <div class="edit-section">
+            <h3>📸 Edit Main Gallery Images</h3>
+            <label>Image 1:</label><input type="text" id="gal1-input">
+            <label>Image 2:</label><input type="text" id="gal2-input">
+            <label>Image 3:</label><input type="text" id="gal3-input">
+            <label>Image 4:</label><input type="text" id="gal4-input">
+        </div>
+
+        <div class="edit-section">
+            <h3>🎯 Edit Activity Images (Enter image paths like assets/jrc.jpg)</h3>
+            <label>Little Kites Image:</label><input type="text" id="kites-img-input">
+            <label>JRC Image:</label><input type="text" id="jrc-img-input">
+            <label>Nature Club Image:</label><input type="text" id="nature-img-input">
+            <label>OGT Image:</label><input type="text" id="ogt-img-input">
+            <label>Field Visits Image:</label><input type="text" id="field-img-input">
+            <label>YIP Image:</label><input type="text" id="yip-img-input">
+            <label>NSS Image:</label><input type="text" id="nss-img-input">
+        </div>
+
+        <button class="save-btn" onclick="saveAllChanges()">Save All Changes to Website</button>
+    </div>
+
+    <script>
+        // Load existing content
+        window.onload = function() {
+            document.getElementById('hs-input').value = localStorage.getItem('hs-notices') || '<li>Welcome to the new term!</li>';
+            document.getElementById('vhss-input').value = localStorage.getItem('vhss-notices') || '<li>NSS camp details updated.</li>';
+            
+            document.getElementById('about-input').value = localStorage.getItem('about-text') || 'Welcome to GVHSS Moolamattom...';
+            document.getElementById('email-input').value = localStorage.getItem('contact-email') || 'info@gvhssmoolamattom.edu';
+            document.getElementById('phone-input').value = localStorage.getItem('contact-phone') || '+91 12345 67890';
+            
+            document.getElementById('gal1-input').value = localStorage.getItem('gal-1') || 'assets/gallery1.jpg';
+            document.getElementById('gal2-input').value = localStorage.getItem('gal-2') || 'assets/gallery2.jpg';
+            document.getElementById('gal3-input').value = localStorage.getItem('gal-3') || 'assets/gallery3.jpg';
+            document.getElementById('gal4-input').value = localStorage.getItem('gal-4') || 'assets/gallery4.jpg';
+
+            // Load Activity Images
+            document.getElementById('kites-img-input').value = localStorage.getItem('kites-img') || '';
+            document.getElementById('jrc-img-input').value = localStorage.getItem('jrc-img') || '';
+            document.getElementById('nature-img-input').value = localStorage.getItem('nature-img') || '';
+            document.getElementById('ogt-img-input').value = localStorage.getItem('ogt-img') || '';
+            document.getElementById('field-img-input').value = localStorage.getItem('field-img') || '';
+            document.getElementById('yip-img-input').value = localStorage.getItem('yip-img') || '';
+            document.getElementById('nss-img-input').value = localStorage.getItem('nss-img') || '';
+        }
+
+        // Save changes
+        function saveAllChanges() {
+            localStorage.setItem('hs-notices', document.getElementById('hs-input').value);
+            localStorage.setItem('vhss-notices', document.getElementById('vhss-input').value);
+            
+            localStorage.setItem('about-text', document.getElementById('about-input').value);
+            localStorage.setItem('contact-email', document.getElementById('email-input').value);
+            localStorage.setItem('contact-phone', document.getElementById('phone-input').value);
+            
+            localStorage.setItem('gal-1', document.getElementById('gal1-input').value);
+            localStorage.setItem('gal-2', document.getElementById('gal2-input').value);
+            localStorage.setItem('gal-3', document.getElementById('gal3-input').value);
+            localStorage.setItem('gal-4', document.getElementById('gal4-input').value);
+
+            // Save Activity Images
+            localStorage.setItem('kites-img', document.getElementById('kites-img-input').value);
+            localStorage.setItem('jrc-img', document.getElementById('jrc-img-input').value);
+            localStorage.setItem('nature-img', document.getElementById('nature-img-input').value);
+            localStorage.setItem('ogt-img', document.getElementById('ogt-img-input').value);
+            localStorage.setItem('field-img', document.getElementById('field-img-input').value);
+            localStorage.setItem('yip-img', document.getElementById('yip-img-input').value);
+            localStorage.setItem('nss-img', document.getElementById('nss-img-input').value);
+            
+            alert("Success! All changes have been saved and pushed to the main website.");
+        }
+    </script>
+</body>
+</html>
