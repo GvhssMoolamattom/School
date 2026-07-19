@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents Portal - GVHSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: white; background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #00b09b); background-size: 400% 400%; animation: gradientBG 15s ease infinite; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        nav { width: 100%; padding: 20px; box-sizing: border-box; }
+        .back-btn { color: white; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255,255,255,0.5); padding: 8px 15px; border-radius: 20px; transition: background 0.3s; }
+        .back-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .form-container { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 40px; width: 100%; max-width: 500px; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-top: 0; margin-bottom: 5px; color: #a8ff78; }
+        p { font-weight: 300; margin-bottom: 25px; color: #e0e0e0; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--glass-border); border-radius: 8px; background: rgba(0,0,0,0.2); color: white; font-family: 'Inter', sans-serif; box-sizing: border-box; outline: none; }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.4); }
+        textarea { height: 120px; resize: vertical; }
+        
+        button { background: #a8ff78; color: #0f2027; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-family: 'Inter', sans-serif; }
+        button:hover { transform: translateY(-2px); background: #8eeb60; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Return to Main Site</a>
+    </nav>
+
+    <div class="form-container">
+        <h2>Parents Portal</h2>
+        <p>We highly value the insights and suggestions of our parent community.</p>
+
+        <form id="feedback-form">
+            <label>Parent's Name</label>
+            <input type="text" id="parent-name" placeholder="Enter your full name" required>
+
+            <label>Student's Name & Class</label>
+            <input type="text" id="student-name" placeholder="E.g., Arjun K. - Class 10A" required>
+
+            <label>Your Suggestion / Opinion</label>
+            <textarea id="suggestion-text" placeholder="Share your thoughts with the school administration..." required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const pName = document.getElementById('parent-name').value;
+            const sName = document.getElementById('student-name').value;
+            const feedback = document.getElementById('suggestion-text').value;
+            const date = new Date().toLocaleDateString();
+
+            let suggestions = JSON.parse(localStorage.getItem('parent-suggestions')) || [];
+            suggestions.push({ pName, sName, feedback, date });
+            localStorage.setItem('parent-suggestions', JSON.stringify(suggestions));
+
+            alert('Thank you! Your feedback has been securely submitted to the administration.');
+            document.getElementById('feedback-form').reset();
+        });
+    </script>
+</body>
+</html>

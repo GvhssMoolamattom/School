@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - GVHSS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #005c97; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 300px; text-align: center; }
-        h2 { color: #005c97; margin-top: 0; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        button { width: 100%; background: #00bf72; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 15px; }
-        button:hover { background: #009e5d; }
-        .error { color: red; font-size: 12px; display: none; margin-top: 10px; }
-        .back-link { display: block; margin-top: 20px; font-size: 12px; color: #777; text-decoration: none; }
+        body { font-family: 'Inter', sans-serif; background: #0f2027; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 300px; text-align: center; }
+        h2 { color: #0f2027; margin-top: 0; margin-bottom: 25px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        button { width: 100%; background: #00b09b; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: background 0.3s; }
+        button:hover { background: #008f7e; }
+        .error { color: #e74c3c; font-size: 13px; display: none; margin-top: 15px; font-weight: 600; }
+        .back-link { display: block; margin-top: 25px; font-size: 13px; color: #777; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <div class="login-card">
-        <h2>Admin Portal</h2>
+        <h2>Administrator Login</h2>
         <form id="login-form">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Access Dashboard</button>
             <p class="error" id="error-msg">Incorrect username or password.</p>
         </form>
         <a href="index.html" class="back-link">← Back to Main Site</a>
@@ -31,13 +31,12 @@
 
     <script>
         document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page from refreshing
-            
+            e.preventDefault();
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
 
             if (user === 'admin' && pass === 'gvhss123') {
-                window.location.href = 'admin.html'; // Send to dashboard
+                window.location.href = 'admin.html';
             } else {
                 document.getElementById('error-msg').style.display = 'block';
             }
