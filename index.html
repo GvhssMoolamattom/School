@@ -18,49 +18,60 @@
         .book { position: absolute; bottom: -100px; font-size: 2rem; opacity: 0.15; animation: floatUp linear infinite; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.2; } 90% { opacity: 0.2; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
 
-        nav { background: rgba(15, 32, 39, 0.6); backdrop-filter: blur(15px); padding: 15px 40px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; }
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-container img { width: 45px; height: 45px; border-radius: 50%; }
-        .logo-container h1 { font-size: 1.5rem; letter-spacing: 1px; }
-        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 400; margin-left: 25px; font-size: 1rem; transition: opacity 0.3s; }
-        .nav-links a:hover { opacity: 0.7; }
-        .nav-btn { border: 1px solid white; padding: 8px 18px; border-radius: 20px; transition: background 0.3s, color 0.3s; }
-        .nav-btn:hover { background: white; color: #0f2027 !important; }
+        /* Responsive Glass Nav Bar */
+        nav { background: rgba(15, 32, 39, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        
+        .nav-top { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-container img { width: 40px; height: 40px; border-radius: 50%; }
+        .logo-container h1 { font-size: 1.3rem; letter-spacing: 1px; }
 
-        .hero { position: relative; height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; margin: 20px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
+        .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 400; font-size: 0.95rem; transition: opacity 0.3s; padding: 5px 10px; }
+        .nav-links a:hover { opacity: 0.7; }
+        
+        .nav-btn { border: 1px solid #a8ff78; color: #a8ff78 !important; border-radius: 20px; font-weight: 600 !important; }
+        .nav-btn:hover { background: #a8ff78; color: #0f2027 !important; }
+        .admin-top-btn { font-size: 0.8rem !important; border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; color: var(--text-muted) !important; }
+
+        .hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid var(--glass-border); }
         .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/school-photo.jpg') center/cover; z-index: -2; }
         .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 32, 39, 0.6), rgba(15, 32, 39, 0.9)); z-index: -1; }
-        .hero-content { z-index: 1; padding: 0 20px; }
-        .hero h2 { font-size: 4.5rem; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; letter-spacing: 1px; }
+        .hero-content { z-index: 1; padding: 0 15px; }
+        .hero h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .hero p { font-size: 1.1rem; margin-bottom: 20px; font-weight: 300; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 1; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
-        .section-header .divider { width: 60px; height: 2px; background: white; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; position: relative; z-index: 1; box-sizing: border-box; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 2.3rem; margin-bottom: 12px; }
+        .section-header .divider { width: 50px; height: 2px; background: white; margin: 0 auto; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.4s ease; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.4s ease; box-sizing: border-box; }
         .card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
-        .card h3 { font-size: 1.8rem; margin-bottom: 15px; color: #a8ff78; }
-        .card p { font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); font-weight: 300; }
+        .card h3 { font-size: 1.6rem; margin-bottom: 15px; color: #a8ff78; }
+        .card p { font-size: 1rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; }
         
-        .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
-        .chip { background: transparent; color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 400; text-decoration: none; border: 1px solid var(--glass-border); transition: all 0.3s; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .chip { background: transparent; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 400; text-decoration: none; border: 1px solid var(--glass-border); transition: all 0.3s; }
         a.chip:hover { background: white; color: #0f2027; }
         span.chip { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.4); font-weight: 600; }
 
         .notice-list { list-style: none; padding: 0; margin: 0; }
-        .notice-list li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1.05rem; font-weight: 300; }
+        .notice-list li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; font-weight: 300; word-break: break-word; }
         .notice-list li:last-child { border-bottom: none; }
 
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; border: 1px solid var(--glass-border); transition: transform 0.4s ease; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; border: 1px solid var(--glass-border); transition: transform 0.4s ease; }
         .gallery img:hover { transform: scale(1.03); }
 
-        footer { background: rgba(15, 32, 39, 0.8); backdrop-filter: blur(10px); padding: 50px 20px; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 40px; }
+        footer { background: rgba(15, 32, 39, 0.8); backdrop-filter: blur(10px); padding: 40px 15px; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 40px; }
         
-        @media (max-width: 768px) { .nav-links { display: none; } .hero h2 { font-size: 3rem; } }
+        /* Desktop Optimization Styles */
+        @media (min-width: 769px) {
+            nav { flex-direction: row; padding: 15px 40px; }
+            .nav-links { width: auto; border-top: none; padding-top: 0; gap: 5px; }
+        }
     </style>
 </head>
 <body>
@@ -74,9 +85,12 @@
     </div>
 
     <nav>
-        <div class="logo-container">
-            <img src="assets/logo.png" alt="GVHSS Logo">
-            <h1>GVHSS MOOLAMATTOM</h1>
+        <div class="nav-top">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="GVHSS Logo">
+                <h1>GVHSS MOOLAMATTOM</h1>
+            </div>
+            <a href="login.html" class="admin-top-btn a">Admin</a>
         </div>
         <div class="nav-links">
             <a href="#about">About</a>
@@ -100,15 +114,15 @@
             <h2>Our Heritage</h2>
             <div class="divider"></div>
         </div>
-        <div class="card" style="margin-bottom: 80px; text-align: center;">
-            <p id="about-text" style="font-size: 1.15rem;">Loading about info...</p>
+        <div class="card" style="margin-bottom: 60px; text-align: center;">
+            <p id="about-text" style="font-size: 1.1rem;">Loading about info...</p>
         </div>
 
         <div id="courses" class="section-header">
             <h2>Courses Offered</h2>
             <div class="divider"></div>
         </div>
-        <div class="grid" style="margin-bottom: 80px;">
+        <div class="grid" style="margin-bottom: 60px;">
             <div class="card">
                 <h3>High School Curriculum</h3>
                 <p>Providing a comprehensive foundation across all major subjects to prepare students for higher education.</p>
@@ -133,7 +147,7 @@
             <h2>Co-Curricular Activities</h2>
             <div class="divider"></div>
         </div>
-        <div class="grid" style="margin-bottom: 80px;">
+        <div class="grid" style="margin-bottom: 60px;">
             <div class="card">
                 <h3>High School Clubs</h3>
                 <p>Engaging programs focused on holistic student development, technology, and social awareness.</p>
@@ -159,7 +173,7 @@
             <h2>Official Notices</h2>
             <div class="divider"></div>
         </div>
-        <div class="grid" style="margin-bottom: 80px;">
+        <div class="grid" style="margin-bottom: 60px;">
             <div class="card">
                 <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">High School</h3>
                 <ul class="notice-list" id="hs-notices"></ul>
@@ -174,7 +188,7 @@
             <h2>Campus Life</h2>
             <div class="divider"></div>
         </div>
-        <div class="gallery" style="margin-bottom: 40px;">
+        <div class="gallery" style="margin-bottom: 20px;">
             <img id="gal-1" src="" alt="Gallery Image">
             <img id="gal-2" src="" alt="Gallery Image">
             <img id="gal-3" src="" alt="Gallery Image">
@@ -183,10 +197,10 @@
     </div>
 
     <footer>
-        <p style="font-size: 1.1rem; font-weight: 300;">
-            Email: <strong id="contact-email"></strong> | Phone: <strong id="contact-phone"></strong>
+        <p style="font-size: 1rem; font-weight: 300;">
+            Email: <strong id="contact-email"></strong> <br> Phone: <strong id="contact-phone"></strong>
         </p>
-        <a href="login.html" style="display: inline-block; margin-top: 20px; color: #a8ff78; text-decoration: none; font-size: 0.9rem;">Administrator Access</a>
+        <p style="margin-top: 20px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">&copy; 2026 GVHSS Moolamattom.</p>
     </footer>
 
     <script>
