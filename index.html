@@ -3,213 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GVHSS Moolamattom</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>GVHSS Moolamattom - Ultimate Onam Savage Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); --text-light: #ffffff; --text-muted: #e0e0e0; }
+        :root { 
+            --onam-green: #114216;
+            --onam-gold: #ffc107;
+            --onam-yellow: #fffde7;
+            --onam-orange: #ff6f00;
+            --savage-red: #d50000;
+            --bg-light: #fbfdf9;
+            --text-dark: #111111;
+        }
+        
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-light); overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0; font-weight: 700; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Manjari', sans-serif; margin: 0; }
+
+        /* Top Navigation Bar */
+        nav { background: var(--onam-green); color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-box img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--onam-gold); }
+        .logo-box h1 { font-size: 1.2rem; font-weight: 800; color: var(--onam-gold); letter-spacing: 0.5px; }
+
+        /* Three-line Hamburger Button */
+        .menu-toggle { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 5px; }
+        .menu-toggle span { display: block; width: 28px; height: 3px; background-color: var(--onam-gold); border-radius: 2px; transition: 0.3s; }
+
+        /* Side Navigation Drawer */
+        .side-drawer { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.25); z-index: 2000; transition: right 0.4s ease-in-out; display: flex; flex-direction: column; padding: 30px 20px; box-sizing: border-box; }
+        .side-drawer.open { right: 0; }
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        .drawer-header h3 { color: var(--onam-green); font-size: 1.3rem; font-weight: 800; }
+        .close-btn { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #555; }
         
-        .animated-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3; background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #00b09b); background-size: 400% 400%; animation: gradientBG 15s ease infinite; }
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .drawer-links { display: flex; flex-direction: column; gap: 15px; }
+        .drawer-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 1.05rem; padding: 10px 15px; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+        .drawer-links a:hover { background: var(--onam-yellow); color: var(--onam-orange); }
+        .drawer-btn-special { background: var(--onam-orange); color: #fff !important; text-align: center; margin-top: 10px; }
+        .drawer-btn-inaug { background: var(--savage-red); color: #fff !important; text-align: center; font-weight: 800; }
 
-        .book-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden; }
-        .book { position: absolute; bottom: -100px; font-size: 2rem; opacity: 0.15; animation: floatUp linear infinite; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
-        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.2; } 90% { opacity: 0.2; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+        /* Overlay */
+        .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
+        .overlay.active { display: block; }
 
-        /* Responsive Glass Nav Bar */
-        nav { background: rgba(15, 32, 39, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        /* Hanging Flower Garlands Images at the Sides */
+        .mala-img-left, .mala-img-right {
+            position: absolute; top: 0; width: 65px; height: auto; z-index: 5; pointer-events: none;
+            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.3));
+        }
+        .mala-img-left { left: 15px; }
+        .mala-img-right { right: 15px; }
+
+        /* Ultimate Onam Savage Colorful Hero Section */
+        .hero { 
+            background: linear-gradient(135deg, #fff9c4, #ffe0b2, #fffde7); 
+            border-bottom: 5px solid var(--onam-gold); padding: 70px 20px; text-align: center; 
+            position: relative; overflow: hidden; 
+            box-shadow: inset 0 0 30px rgba(255, 152, 0, 0.2);
+        }
         
-        .nav-top { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-        .logo-container { display: flex; align-items: center; gap: 12px; }
-        .logo-container img { width: 40px; height: 40px; border-radius: 50%; }
-        .logo-container h1 { font-size: 1.3rem; letter-spacing: 1px; }
-
-        .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
-        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 400; font-size: 0.95rem; transition: opacity 0.3s; padding: 5px 10px; }
-        .nav-links a:hover { opacity: 0.7; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 20px; }
+        .hero-center { flex: 1; min-width: 280px; text-align: center; }
         
-        .nav-btn { border: 1px solid #a8ff78; color: #a8ff78 !important; border-radius: 20px; font-weight: 600 !important; }
-        .nav-btn:hover { background: #a8ff78; color: #0f2027 !important; }
-        .admin-top-btn { font-size: 0.8rem !important; border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; color: var(--text-muted) !important; }
+        /* Vibrant Pookalam Side Decorations */
+        .pookalam-left, .pookalam-right {
+            width: 130px; height: 130px; border-radius: 50%;
+            background: radial-gradient(circle, #ffeb3b 15%, #ff9800 35%, #e91e63 55%, #4caf50 75%, #114216 100%);
+            border: 5px solid var(--onam-gold);
+            box-shadow: 0 0 25px rgba(255, 193, 7, 0.8), inset 0 0 15px rgba(255,255,255,0.5);
+            display: flex; align-items: center; justify-content: center; font-size: 2.8rem;
+            animation: spinPookalam 15s linear infinite;
+            margin: auto;
+        }
+        @keyframes spinPookalam {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
-        .hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid var(--glass-border); }
-        .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/school-photo.jpg') center/cover; z-index: -2; }
-        .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 32, 39, 0.6), rgba(15, 32, 39, 0.9)); z-index: -1; }
-        .hero-content { z-index: 1; padding: 0 15px; }
-        .hero h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-        .hero p { font-size: 1.1rem; margin-bottom: 20px; font-weight: 300; }
+        .savage-badge { display: inline-block; background: var(--savage-red); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(213,0,0,0.3); }
+        .hero h2 { font-size: 3rem; color: var(--onam-green); font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .hero p { font-size: 1.15rem; color: #333; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 600; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; position: relative; z-index: 1; box-sizing: border-box; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 2.3rem; margin-bottom: 12px; }
-        .section-header .divider { width: 50px; height: 2px; background: white; margin: 0 auto; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.4s ease; box-sizing: border-box; }
-        .card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
-        .card h3 { font-size: 1.6rem; margin-bottom: 15px; color: #a8ff78; }
-        .card p { font-size: 1rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; }
+        /* Container & Clean Solid Cards */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; box-sizing: border-box; }
         
-        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-        .chip { background: transparent; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 400; text-decoration: none; border: 1px solid var(--glass-border); transition: all 0.3s; }
-        a.chip:hover { background: white; color: #0f2027; }
-        span.chip { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.4); font-weight: 600; }
+        .section-title { font-size: 2.1rem; color: var(--onam-green); margin-bottom: 30px; text-align: center; font-weight: 800; }
+        .section-title::after { content: ""; display: block; width: 80px; height: 4px; background: var(--onam-gold); margin: 8px auto 0; border-radius: 2px; }
 
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        
+        .clean-card { background: #ffffff; border-radius: 18px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); border: 1px solid #e0e0e0; transition: transform 0.3s; }
+        .clean-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(27, 94, 32, 0.12); }
+        .clean-card.hs-card { border-top: 6px solid var(--onam-gold); }
+        .clean-card.vhse-card { border-top: 6px solid var(--onam-green); }
+
+        .clean-card h3 { font-size: 1.6rem; margin-bottom: 12px; color: var(--onam-green); font-weight: 800; }
+        .clean-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; font-weight: 400; }
+
+        /* Clean Tags */
+        .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #f1f8f1; color: var(--onam-green); padding: 7px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; border: 1px solid #c8e6c9; transition: all 0.2s; }
+        a.tag:hover { background: var(--onam-green); color: #fff; }
+        span.tag { background: #fff8e1; color: var(--onam-orange); border-color: #ffe0b2; }
+
+        /* Notices Section */
+        .notice-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .notice-box { background: #ffffff; padding: 25px; border-radius: 18px; border: 1px solid #e0e0e0; box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .notice-box h4 { font-size: 1.15rem; color: var(--savage-red); margin-bottom: 15px; font-family: 'Manjari', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 800; }
         .notice-list { list-style: none; padding: 0; margin: 0; }
-        .notice-list li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; font-weight: 300; word-break: break-word; }
+        .notice-list li { padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.95rem; color: #333; line-height: 1.5; font-weight: 500; }
         .notice-list li:last-child { border-bottom: none; }
 
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; border: 1px solid var(--glass-border); transition: transform 0.4s ease; }
-        .gallery img:hover { transform: scale(1.03); }
+        /* Gallery Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 50px; }
+        .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 14px; border: 2px solid var(--onam-gold); transition: transform 0.3s; }
+        .gallery-grid img:hover { transform: scale(1.03); }
 
-        footer { background: rgba(15, 32, 39, 0.8); backdrop-filter: blur(10px); padding: 40px 15px; text-align: center; border-top: 1px solid var(--glass-border); margin-top: 40px; }
-        
-        /* Desktop Optimization Styles */
-        @media (min-width: 769px) {
-            nav { flex-direction: row; padding: 15px 40px; }
-            .nav-links { width: auto; border-top: none; padding-top: 0; gap: 5px; }
+        /* Footer */
+        footer { background: var(--onam-green); color: #ffffff; padding: 35px 20px; text-align: center; border-top: 5px solid var(--onam-gold); }
+        footer p { font-size: 0.95rem; margin: 6px 0; font-weight: 500; }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.1rem; }
+            .pookalam-left, .pookalam-right { display: none; }
+            .mala-img-left, .mala-img-right { width: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="animated-bg"></div>
-    <div class="book-container">
-        <div class="book" style="left: 15%; animation-duration: 18s; animation-delay: 0s;">📚</div>
-        <div class="book" style="left: 35%; animation-duration: 22s; animation-delay: 3s;">📖</div>
-        <div class="book" style="left: 65%; animation-duration: 19s; animation-delay: 1s;">🎓</div>
-        <div class="book" style="left: 85%; animation-duration: 24s; animation-delay: 4s;">📚</div>
-    </div>
-
     <nav>
-        <div class="nav-top">
-            <div class="logo-container">
-                <img src="assets/logo.png" alt="GVHSS Logo">
-                <h1>GVHSS MOOLAMATTOM</h1>
-            </div>
-            <a href="login.html" class="admin-top-btn a">Admin</a>
+        <div class="logo-box">
+            <img src="assets/logo.png" alt="GVHSS Logo">
+            <h1>GVHSS MOOLAMATTOM</h1>
         </div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#courses">Courses</a>
-            <a href="#academics">Clubs</a>
-            <a href="#notices">Notices</a>
-            <a href="#gallery">Gallery</a>
-            <a href="parents.html" class="nav-btn">Parents Portal</a>
-        </div>
+        <button class="menu-toggle" onclick="toggleDrawer()" aria-label="Open Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
+    <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <h3>Team Savage Menu</h3>
+            <button class="close-btn" onclick="toggleDrawer()">&times;</button>
+        </div>
+        <div class="drawer-links">
+            <a href="inauguration.html" class="drawer-btn-inaug" onclick="toggleDrawer()">✂️ Inauguration Page</a>
+            <a href="#about" onclick="toggleDrawer()">About School</a>
+            <a href="#departments" onclick="toggleDrawer()">Academics Hub</a>
+            <a href="#notices" onclick="toggleDrawer()">Notice Board</a>
+            <a href="#gallery" onclick="toggleDrawer()">Campus Gallery</a>
+            <a href="parents.html" class="drawer-btn-special" onclick="toggleDrawer()">Parents Portal</a>
+            <a href="login.html" style="color: var(--onam-green); font-weight: 800;" onclick="toggleDrawer()">Admin Access</a>
+        </div>
+    </div>
+
     <div class="hero">
-        <div class="hero-content">
-            <h2>Pursue Excellence</h2>
-            <p>Empowering the next generation with knowledge, virtue, and skill.</p>
+        <img src="assets/mala.png" alt="Flower Garland" class="mala-img-left">
+        <img src="assets/mala.png" alt="Flower Garland" class="mala-img-right">
+
+        <div class="hero-flex">
+            <div class="pookalam-left">🌸</div>
+
+            <div class="hero-center">
+                <span class="savage-badge">🔥 TEAM SAVAGE ONAM VIBE 🔥</span>
+                <h2>GVHSS MOOLAMATTOM</h2>
+                <p id="about-text">Loading school overview...</p>
+            </div>
+
+            <div class="pookalam-right">🌺</div>
         </div>
     </div>
 
     <div class="container">
-        <div id="about" class="section-header">
-            <h2>Our Heritage</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="card" style="margin-bottom: 60px; text-align: center;">
-            <p id="about-text" style="font-size: 1.1rem;">Loading about info...</p>
-        </div>
+        <div id="departments">
+            <h2 class="section-title">Academic Divisions</h2>
+            <div class="hub-grid">
+                <div class="clean-card hs-card">
+                    <h3>High School Section</h3>
+                    <p>Building strong academic foundations for classes 8th through 10th with ultimate Onam squad energy.</p>
+                    <h4 style="font-size: 0.85rem; color: var(--onam-orange); margin-bottom: 10px; font-family: 'Manjari'; font-weight: 800;">CLASSES OFFERED</h4>
+                    <div class="tag-group" style="margin-bottom: 20px;">
+                        <span class="tag">8th Std</span>
+                        <span class="tag">9th Std</span>
+                        <span class="tag">10th Std</span>
+                    </div>
+                    <h4 style="font-size: 0.85rem; color: var(--onam-orange); margin-bottom: 10px; font-family: 'Manjari'; font-weight: 800;">CLUBS & ACTIVITIES</h4>
+                    <div class="tag-group">
+                        <a href="activity.html?id=kites" class="tag">Little Kites</a>
+                        <a href="activity.html?id=jrc" class="tag">JRC</a>
+                        <a href="activity.html?id=nature" class="tag">Nature Club</a>
+                    </div>
+                </div>
 
-        <div id="courses" class="section-header">
-            <h2>Courses Offered</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="grid" style="margin-bottom: 60px;">
-            <div class="card">
-                <h3>High School Curriculum</h3>
-                <p>Providing a comprehensive foundation across all major subjects to prepare students for higher education.</p>
-                <div class="chips">
-                    <span class="chip">8th Standard</span>
-                    <span class="chip">9th Standard</span>
-                    <span class="chip">10th Standard</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Vocational Secondary</h3>
-                <p>Specialized vocational programs designed to build highly sought-after, industry-ready skills.</p>
-                <div class="chips">
-                    <a href="activity.html?id=wde" class="chip">Web Developer (WDE)</a>
-                    <a href="activity.html?id=ltr" class="chip">Lab Technician (LTR)</a>
-                    <a href="activity.html?id=dia" class="chip">DIA</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="academics" class="section-header">
-            <h2>Co-Curricular Activities</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="grid" style="margin-bottom: 60px;">
-            <div class="card">
-                <h3>High School Clubs</h3>
-                <p>Engaging programs focused on holistic student development, technology, and social awareness.</p>
-                <div class="chips">
-                    <a href="activity.html?id=kites" class="chip">Little Kites</a>
-                    <a href="activity.html?id=jrc" class="chip">JRC</a>
-                    <a href="activity.html?id=nature" class="chip">Nature Club</a>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Vocational Programs</h3>
-                <p>Practical, career-oriented activities designed to transition students into the professional world.</p>
-                <div class="chips">
-                    <a href="activity.html?id=ogt" class="chip">OGT</a>
-                    <a href="activity.html?id=field" class="chip">Field Visits</a>
-                    <a href="activity.html?id=yip" class="chip">YIP</a>
-                    <a href="activity.html?id=nss" class="chip">NSS</a>
+                <div class="clean-card vhse-card">
+                    <h3>Vocational Higher Secondary</h3>
+                    <p>Career-focused technical education providing professional skills and top-tier industry exposure.</p>
+                    <h4 style="font-size: 0.85rem; color: var(--onam-green); margin-bottom: 10px; font-family: 'Manjari'; font-weight: 800;">VOCATIONAL COURSES</h4>
+                    <div class="tag-group" style="margin-bottom: 20px;">
+                        <a href="activity.html?id=wde" class="tag">Web Developer (WDE)</a>
+                        <a href="activity.html?id=ltr" class="tag">Lab Tech (LTR)</a>
+                        <a href="activity.html?id=dia" class="tag">DIA</a>
+                    </div>
+                    <h4 style="font-size: 0.85rem; color: var(--onam-green); margin-bottom: 10px; font-family: 'Manjari'; font-weight: 800;">PROGRAMS</h4>
+                    <div class="tag-group">
+                        <a href="activity.html?id=ogt" class="tag">OGT</a>
+                        <a href="activity.html?id=field" class="tag">Field Visits</a>
+                        <a href="activity.html?id=yip" class="tag">YIP</a>
+                        <a href="activity.html?id=nss" class="tag">NSS</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="notices" class="section-header">
-            <h2>Official Notices</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="grid" style="margin-bottom: 60px;">
-            <div class="card">
-                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">High School</h3>
-                <ul class="notice-list" id="hs-notices"></ul>
-            </div>
-            <div class="card">
-                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">Vocational</h3>
-                <ul class="notice-list" id="vhss-notices"></ul>
+        <div id="notices">
+            <h2 class="section-title">Latest Announcements</h2>
+            <div class="notice-container">
+                <div class="notice-box" style="border-top: 5px solid var(--onam-gold);">
+                    <h4>High School Updates</h4>
+                    <ul class="notice-list" id="hs-notices"></ul>
+                </div>
+                <div class="notice-box" style="border-top: 5px solid var(--onam-green);">
+                    <h4>Vocational Updates</h4>
+                    <ul class="notice-list" id="vhss-notices"></ul>
+                </div>
             </div>
         </div>
 
-        <div id="gallery" class="section-header">
-            <h2>Campus Life</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="gallery" style="margin-bottom: 20px;">
-            <img id="gal-1" src="" alt="Gallery Image">
-            <img id="gal-2" src="" alt="Gallery Image">
-            <img id="gal-3" src="" alt="Gallery Image">
-            <img id="gal-4" src="" alt="Gallery Image">
+        <div id="gallery" style="scroll-margin-top: 40px;">
+            <h2 class="section-title">Campus Gallery</h2>
+            <div class="gallery-grid">
+                <img id="gal-1" src="" alt="Campus View 1">
+                <img id="gal-2" src="" alt="Campus View 2">
+                <img id="gal-3" src="" alt="Campus View 3">
+                <img id="gal-4" src="" alt="Campus View 4">
+            </div>
         </div>
     </div>
 
     <footer>
-        <p style="font-size: 1rem; font-weight: 300;">
-            Email: <strong id="contact-email"></strong> <br> Phone: <strong id="contact-phone"></strong>
-        </p>
-        <p style="margin-top: 20px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">&copy; 2026 GVHSS Moolamattom.</p>
+        <p style="font-weight: 700;">GVHSS Moolamattom — Team Savage Edition</p>
+        <p>Email: <strong id="contact-email" style="color: var(--onam-gold);"></strong> | Phone: <strong id="contact-phone" style="color: var(--onam-gold);"></strong></p>
     </footer>
 
     <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('sideDrawer');
+            const overlay = document.getElementById('overlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
         window.onload = function() {
-            document.getElementById('hs-notices').innerHTML = localStorage.getItem('hs-notices') || '<li>No recent notices.</li>';
-            document.getElementById('vhss-notices').innerHTML = localStorage.getItem('vhss-notices') || '<li>No recent notices.</li>';
-            document.getElementById('about-text').innerText = localStorage.getItem('about-text') || 'Welcome to GVHSS Moolamattom. We provide comprehensive education blending traditional high school academics with specialized vocational training.';
-            document.getElementById('contact-email').innerText = localStorage.getItem('contact-email') || 'info@gvhss.edu';
-            document.getElementById('contact-phone').innerText = localStorage.getItem('contact-phone') || '+91 12345 67890';
+            document.getElementById('hs-notices').innerHTML = localStorage.getItem('hs-notices') || '<li>No active notices.</li>';
+            document.getElementById('vhss-notices').innerHTML = localStorage.getItem('vhss-notices') || '<li>No active notices.</li>';
+            document.getElementById('about-text').innerText = localStorage.getItem('about-text') || 'Welcome to GVHSS Moolamattom. Powered by Team Savage for the ultimate Onam vibe experience!';
+            document.getElementById('contact-email').innerText = localStorage.getItem('contact-email') || 'info@gvhssmoolamattom.edu';
+            document.getElementById('contact-phone').innerText = localStorage.getItem('contact-phone') || '+91 00000 00000';
             document.getElementById('gal-1').src = localStorage.getItem('gal-1') || 'assets/gallery1.jpg';
             document.getElementById('gal-2').src = localStorage.getItem('gal-2') || 'assets/gallery2.jpg';
             document.getElementById('gal-3').src = localStorage.getItem('gal-3') || 'assets/gallery3.jpg';
