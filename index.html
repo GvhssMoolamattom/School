@@ -93,6 +93,16 @@
             100% { transform: translateY(-8px); }
         }
 
+        /* Maveli Banner Featured Right at the Very Top Center of Hero */
+        .maveli-top-banner {
+            display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; order: 0;
+        }
+        .maveli-top-video {
+            width: 150px; height: auto; border-radius: 15px; border: 3px solid var(--onam-gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: floatMaveli 3s ease-in-out infinite alternate;
+        }
+
         /* School Name First, Badge & Description Underneath */
         .hero h2 { font-size: 3.2rem; color: var(--onam-green); font-weight: 900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); order: 1; }
         .savage-badge { display: inline-block; background: var(--savage-red); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(213,0,0,0.3); order: 2; }
@@ -186,6 +196,9 @@
             </div>
 
             <div class="hero-center">
+                <div class="maveli-top-banner">
+                    <video src="assets/maveli.webm" class="maveli-top-video" autoplay loop muted playsinline></video>
+                </div>
                 <h2>GVHSS MOOLAMATTOM</h2>
                 <span class="savage-badge">🔥 TEAM SAVAGE ONAM VIBE 🔥</span>
                 <p id="about-text">Loading school overview...</p>
