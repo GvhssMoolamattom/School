@@ -66,7 +66,7 @@
         .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 30px; }
         .hero-center { flex: 1; min-width: 300px; text-align: center; }
         
-        /* Vibrant Pookalam & Maveli GIF Container */
+        /* Vibrant Pookalam & Maveli WebM Container */
         .pookalam-left, .pookalam-right {
             display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
@@ -83,8 +83,8 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Mahabali GIF Styling */
-        .maveli-gif {
+        /* Mahabali WebM Styling */
+        .maveli-video {
             width: 130px; height: auto; border-radius: 12px;
             filter: drop-shadow(0 5px 12px rgba(0,0,0,0.35));
             animation: floatMaveli 3s ease-in-out infinite alternate;
@@ -182,7 +182,7 @@
         <div class="hero-flex">
             <div class="pookalam-left">
                 <div class="pookalam-circle">🌸</div>
-                <img src="assets/maveli.gif" alt="Maveli Welcoming" class="maveli-gif">
+                <video src="assets/maveli.webm" class="maveli-video" autoplay loop muted playsinline></video>
             </div>
 
             <div class="hero-center">
@@ -193,7 +193,7 @@
 
             <div class="pookalam-right">
                 <div class="pookalam-circle">🌺</div>
-                <img src="assets/maveli.gif" alt="Maveli Welcoming" class="maveli-gif">
+                <video src="assets/maveli.webm" class="maveli-video" autoplay loop muted playsinline></video>
             </div>
         </div>
     </div>
