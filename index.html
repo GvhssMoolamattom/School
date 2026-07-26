@@ -47,23 +47,23 @@
         .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
         .overlay.active { display: block; }
 
-        /* Hanging Flower Garlands Images at the Sides */
+        /* Large Hanging Flower Garlands Images at the Sides */
         .mala-img-left, .mala-img-right {
-            position: absolute; top: 0; width: 65px; height: auto; z-index: 5; pointer-events: none;
-            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.3));
+            position: absolute; top: 0; width: 150px; height: auto; z-index: 5; pointer-events: none;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4));
         }
-        .mala-img-left { left: 15px; }
-        .mala-img-right { right: 15px; }
+        .mala-img-left { left: 10px; }
+        .mala-img-right { right: 10px; }
 
-        /* Ultimate Onam Savage Colorful Hero Section */
+        /* Ultimate Onam Savage Colorful Hero Section with extra padding for large garlands */
         .hero { 
             background: linear-gradient(135deg, #fff9c4, #ffe0b2, #fffde7); 
-            border-bottom: 5px solid var(--onam-gold); padding: 70px 20px; text-align: center; 
+            border-bottom: 5px solid var(--onam-gold); padding: 90px 20px; text-align: center; 
             position: relative; overflow: hidden; 
             box-shadow: inset 0 0 30px rgba(255, 152, 0, 0.2);
         }
         
-        .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 20px; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 20px; }
         .hero-center { flex: 1; min-width: 280px; text-align: center; }
         
         /* Vibrant Pookalam Side Decorations */
@@ -83,7 +83,7 @@
 
         .savage-badge { display: inline-block; background: var(--savage-red); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(213,0,0,0.3); }
         .hero h2 { font-size: 3rem; color: var(--onam-green); font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-        .hero p { font-size: 1.15rem; color: #333; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 600; }
+        .hero p { font-size: 1.15rem; color: #333; max-width: 550px; margin: 0 auto; line-height: 1.6; font-weight: 600; }
 
         /* Container & Clean Solid Cards */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; box-sizing: border-box; }
@@ -127,7 +127,7 @@
         @media (max-width: 768px) {
             .hero h2 { font-size: 2.1rem; }
             .pookalam-left, .pookalam-right { display: none; }
-            .mala-img-left, .mala-img-right { width: 40px; }
+            .mala-img-left, .mala-img-right { width: 90px; }
         }
     </style>
 </head>
