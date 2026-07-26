@@ -47,18 +47,23 @@
         .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
         .overlay.active { display: block; }
 
-        /* Massive U-Shape Garland Layout (Vertical tops + Horizontal sides draping across) */
+        /* Massive U-Shape Garland Layout (Vertical top bar + Left/Right vertical sides) */
+        .mala-top-bar {
+            position: absolute; top: 0; left: 0; width: 100%; height: 50px;
+            background-image: url('assets/mala.png'); background-repeat: repeat-x; background-size: contain;
+            z-index: 5; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
+        }
         .mala-img-left, .mala-img-right {
-            position: absolute; top: 0; width: 240px; height: auto; z-index: 5; pointer-events: none;
+            position: absolute; top: 0; width: 200px; height: auto; z-index: 5; pointer-events: none;
             filter: drop-shadow(0 12px 20px rgba(0,0,0,0.45));
         }
-        .mala-img-left { left: 0px; transform: scaleX(1); }
+        .mala-img-left { left: 0px; }
         .mala-img-right { right: 0px; transform: scaleX(-1); }
 
-        /* Ultimate Onam Savage Colorful Hero Section with massive area */
+        /* Ultimate Onam Savage Colorful Hero Section */
         .hero { 
             background: linear-gradient(135deg, #fff9c4, #ffe0b2, #fffde7); 
-            border-bottom: 5px solid var(--onam-gold); padding: 140px 20px 100px 20px; text-align: center; 
+            border-bottom: 5px solid var(--onam-gold); padding: 150px 20px 110px 20px; text-align: center; 
             position: relative; overflow: hidden; 
             box-shadow: inset 0 0 40px rgba(255, 152, 0, 0.25);
         }
@@ -66,19 +71,32 @@
         .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 20px; }
         .hero-center { flex: 1; min-width: 280px; text-align: center; }
         
-        /* Vibrant Pookalam Side Decorations */
+        /* Vibrant Pookalam Side Decorations & Maveli GIF Container */
         .pookalam-left, .pookalam-right {
-            width: 130px; height: 130px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+        .pookalam-circle {
+            width: 120px; height: 120px; border-radius: 50%;
             background: radial-gradient(circle, #ffeb3b 15%, #ff9800 35%, #e91e63 55%, #4caf50 75%, #114216 100%);
-            border: 5px solid var(--onam-gold);
-            box-shadow: 0 0 25px rgba(255, 193, 7, 0.8), inset 0 0 15px rgba(255,255,255,0.5);
-            display: flex; align-items: center; justify-content: center; font-size: 2.8rem;
+            border: 4px solid var(--onam-gold);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.8), inset 0 0 12px rgba(255,255,255,0.5);
+            display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
             animation: spinPookalam 15s linear infinite;
-            margin: auto;
         }
         @keyframes spinPookalam {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* Mahabali GIF Styling */
+        .maveli-gif {
+            width: 110px; height: auto; border-radius: 12px;
+            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.3));
+            animation: floatMaveli 3s ease-in-out infinite alternate;
+        }
+        @keyframes floatMaveli {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
         }
 
         .savage-badge { display: inline-block; background: var(--savage-red); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(213,0,0,0.3); }
@@ -127,7 +145,7 @@
         @media (max-width: 768px) {
             .hero h2 { font-size: 2.1rem; }
             .pookalam-left, .pookalam-right { display: none; }
-            .mala-img-left, .mala-img-right { width: 130px; }
+            .mala-img-left, .mala-img-right { width: 110px; }
         }
     </style>
 </head>
@@ -163,11 +181,15 @@
     </div>
 
     <div class="hero">
+        <div class="mala-top-bar"></div>
         <img src="assets/mala.png" alt="Flower Garland" class="mala-img-left">
         <img src="assets/mala.png" alt="Flower Garland" class="mala-img-right">
 
         <div class="hero-flex">
-            <div class="pookalam-left">🌸</div>
+            <div class="pookalam-left">
+                <div class="pookalam-circle">🌸</div>
+                <img src="assets/maveli.gif" alt="Maveli Welcoming" class="maveli-gif">
+            </div>
 
             <div class="hero-center">
                 <span class="savage-badge">🔥 TEAM SAVAGE ONAM VIBE 🔥</span>
@@ -175,7 +197,10 @@
                 <p id="about-text">Loading school overview...</p>
             </div>
 
-            <div class="pookalam-right">🌺</div>
+            <div class="pookalam-right">
+                <div class="pookalam-circle">🌺</div>
+                <img src="assets/maveli.gif" alt="Maveli Welcoming" class="maveli-gif">
+            </div>
         </div>
     </div>
 
