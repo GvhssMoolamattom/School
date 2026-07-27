@@ -6,155 +6,40 @@
     <title>Admin Dashboard - GVHSS Moolamattom</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-green: #114216;
-            --accent-gold: #ffc107;
-            --savage-red: #d50000;
-            --bg-light: #f4f6f8;
-        }
+        :root { --primary-green: #114216; --accent-gold: #ffc107; --savage-red: #d50000; --bg-light: #f4f6f8; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: #333; }
+        header { background: var(--primary-green); color: #fff; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        header h1 { margin: 0; font-size: 1.4rem; color: var(--accent-gold); font-weight: 800; }
+        .logout-btn { background: var(--savage-red); color: #fff; padding: 8px 18px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .admin-card { background: #ffffff; border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .admin-card h2 { margin-top: 0; color: var(--primary-green); font-size: 1.3rem; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #4a5568; }
+        textarea, input[type="text"], input[type="email"], input[type="file"] { width: 100%; padding: 12px; border: 2px solid #cbd5e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; outline: none; }
+        textarea:focus, input[type="text"]:focus { border-color: var(--accent-gold); }
+        .help-text { font-size: 0.8rem; color: #718096; margin-top: 5px; }
+        
+        .btn { border: none; padding: 12px 25px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .save-btn { background: var(--primary-green); color: var(--accent-gold); }
+        .save-btn:hover { background: #0b3d0b; }
+        .add-btn { background: var(--accent-gold); color: #111; padding: 6px 15px; font-size: 0.85rem; border-radius: 20px; }
+        .remove-btn { background: #fee2e2; color: #b91c1c; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; margin-top: 10px; width: 100%; border: none; cursor: pointer; font-weight: 700; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-light);
-            color: #333;
-        }
+        /* Dynamic Gallery Grid */
+        .gallery-upload-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .gallery-upload-item { background: #f8fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 15px; text-align: center; position: relative; }
+        .gallery-preview { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; background: #e2e8f0; }
 
-        header {
-            background: var(--primary-green);
-            color: #fff;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
+        /* Parent Messages */
+        .message-box { background: #f1f8f1; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-green); margin-bottom: 15px; }
+        .message-box h4 { margin: 0 0 5px 0; color: var(--primary-green); }
+        .message-box span { font-size: 0.85rem; color: #555; }
+        .message-box p { margin: 10px 0 0 0; font-size: 0.95rem; }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            font-weight: 800;
-        }
-
-        .logout-btn {
-            background: var(--savage-red);
-            color: #fff;
-            padding: 8px 18px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .logout-btn:hover { opacity: 0.9; }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .admin-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-
-        .admin-card h2 {
-            margin-top: 0;
-            color: var(--primary-green);
-            font-size: 1.3rem;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #4a5568;
-        }
-
-        textarea, input[type="text"], input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #cbd5e0;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        textarea:focus, input[type="text"]:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .save-btn {
-            background: var(--primary-green);
-            color: var(--accent-gold);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .save-btn:hover {
-            background: #0b3d0b;
-        }
-
-        /* Gallery Grid Controls */
-        .gallery-upload-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-upload-item {
-            background: #f8fafc;
-            border: 2px dashed #cbd5e0;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .gallery-preview {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            background: #e2e8f0;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-green);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: none;
-            font-weight: 600;
-            z-index: 9999;
-        }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: var(--primary-green); color: #fff; padding: 12px 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; font-weight: 600; z-index: 9999; }
     </style>
 </head>
 <body>
@@ -167,43 +52,33 @@
     <div class="container">
         
         <div class="admin-card">
-            <h2>School Overview Text</h2>
-            <div class="form-group">
-                <label for="aboutInput">Main Hero Description</label>
-                <textarea id="aboutInput" rows="3" placeholder="Enter school summary description..."></textarea>
-            </div>
-            <button class="save-btn" onclick="saveAbout()">Update Overview 🚀</button>
+            <h2>Parents Portal Feedback / Suggestions</h2>
+            <div id="parentMessagesList">
+                </div>
         </div>
 
         <div class="admin-card">
-            <h2>Manage Campus Gallery Images</h2>
-            <div class="gallery-upload-grid">
-                
-                <div class="gallery-upload-item">
-                    <h4>Slot 1</h4>
-                    <img id="prev-gal-1" class="gallery-preview" src="assets/gallery1.png" alt="Preview 1">
-                    <input type="file" id="file-gal-1" accept="image/*" onchange="uploadImage(event, 'gal-1', 'prev-gal-1')">
-                </div>
-
-                <div class="gallery-upload-item">
-                    <h4>Slot 2</h4>
-                    <img id="prev-gal-2" class="gallery-preview" src="assets/gallery2.png" alt="Preview 2">
-                    <input type="file" id="file-gal-2" accept="image/*" onchange="uploadImage(event, 'gal-2', 'prev-gal-2')">
-                </div>
-
-                <div class="gallery-upload-item">
-                    <h4>Slot 3</h4>
-                    <img id="prev-gal-3" class="gallery-preview" src="assets/gallery3.png" alt="Preview 3">
-                    <input type="file" id="file-gal-3" accept="image/*" onchange="uploadImage(event, 'gal-3', 'prev-gal-3')">
-                </div>
-
-                <div class="gallery-upload-item">
-                    <h4>Slot 4</h4>
-                    <img id="prev-gal-4" class="gallery-preview" src="assets/gallery4.png" alt="Preview 4">
-                    <input type="file" id="file-gal-4" accept="image/*" onchange="uploadImage(event, 'gal-4', 'prev-gal-4')">
-                </div>
-
+            <h2>Manage Notice Boards</h2>
+            <div class="form-group">
+                <label for="hsNotices">High School Notices</label>
+                <textarea id="hsNotices" rows="4" placeholder="<li>Sample Notice 1</li>"></textarea>
+                <div class="help-text">Wrap each notice in &lt;li&gt; and &lt;/li&gt; tags.</div>
             </div>
+            <div class="form-group">
+                <label for="vhssNotices">VHSS (Vocational) Notices</label>
+                <textarea id="vhssNotices" rows="4" placeholder="<li>Sample Notice 1</li>"></textarea>
+                <div class="help-text">Wrap each notice in &lt;li&gt; and &lt;/li&gt; tags.</div>
+            </div>
+            <button class="btn save-btn" onclick="saveNotices()">Update Notices 🚀</button>
+        </div>
+
+        <div class="admin-card">
+            <h2>
+                Manage Campus Gallery 
+                <button class="btn add-btn" onclick="addGallerySlot()">+ Add New Image Slot</button>
+            </h2>
+            <div class="gallery-upload-grid" id="gallery-upload-grid">
+                </div>
         </div>
 
     </div>
@@ -212,53 +87,95 @@
 
     <script>
         // Guard check for admin login
-        if (localStorage.getItem('isAdmin') !== 'true') {
-            window.location.href = 'login.html';
-        }
-
-        function logout() {
-            localStorage.removeItem('isAdmin');
-            window.location.href = 'login.html';
-        }
+        if (localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'login.html'; }
+        function logout() { localStorage.removeItem('isAdmin'); window.location.href = 'login.html'; }
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.style.display = 'block';
+            toast.innerText = msg; toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 2500);
         }
 
-        // Load existing content on startup
+        // --- GLOBAL ARRAYS ---
+        let galleryArr = JSON.parse(localStorage.getItem('dynamic-gallery')) || [
+            'assets/gallery1.png', 'assets/gallery2.png', 'assets/gallery3.png', 'assets/gallery4.png'
+        ];
+
         window.onload = function() {
-            document.getElementById('aboutInput').value = localStorage.getItem('about-text') || '';
+            // Load Notices
+            document.getElementById('hsNotices').value = localStorage.getItem('hs-notices') || '';
+            document.getElementById('vhssNotices').value = localStorage.getItem('vhss-notices') || '';
             
-            for (let i = 1; i <= 4; i++) {
-                const savedImg = localStorage.getItem(`gal-${i}`);
-                if (savedImg) {
-                    document.getElementById(`prev-gal-${i}`).src = savedImg;
-                }
-            }
+            // Load Parent Messages
+            loadParentMessages();
+            // Load Gallery Grid
+            renderAdminGallery();
         };
 
-        function saveAbout() {
-            const text = document.getElementById('aboutInput').value.trim();
-            localStorage.setItem('about-text', text);
-            showToast('Overview text updated!');
+        // --- PARENT MESSAGES LOGIC ---
+        function loadParentMessages() {
+            const messages = JSON.parse(localStorage.getItem('parent-messages')) || [];
+            const container = document.getElementById('parentMessagesList');
+            if(messages.length === 0) {
+                container.innerHTML = '<p style="color:#777;">No suggestions submitted from parents yet.</p>';
+                return;
+            }
+            container.innerHTML = messages.map(msg => `
+                <div class="message-box">
+                    <h4>${msg.name}</h4>
+                    <span>Contact: ${msg.contact} | Date: ${msg.date}</span>
+                    <p>${msg.suggestion}</p>
+                </div>
+            `).join('');
         }
 
-        // Handle Image Upload and save to LocalStorage as DataURL
-        function uploadImage(event, storageKey, previewId) {
-            const file = event.target.files[0];
-            if (!file) return;
+        // --- NOTICES LOGIC ---
+        function saveNotices() {
+            localStorage.setItem('hs-notices', document.getElementById('hsNotices').value.trim());
+            localStorage.setItem('vhss-notices', document.getElementById('vhssNotices').value.trim());
+            showToast('Notice Boards updated!');
+        }
 
+        // --- DYNAMIC GALLERY LOGIC ---
+        function renderAdminGallery() {
+            const container = document.getElementById('gallery-upload-grid');
+            container.innerHTML = '';
+            galleryArr.forEach((src, index) => {
+                container.innerHTML += `
+                    <div class="gallery-upload-item">
+                        <h4 style="margin:0 0 10px 0; color:#4a5568;">Image ${index + 1}</h4>
+                        <img class="gallery-preview" src="${src}" alt="Preview ${index + 1}">
+                        <input type="file" accept="image/*" onchange="handleDynamicUpload(event, ${index})">
+                        <button class="remove-btn" onclick="removeGallerySlot(${index})">❌ Remove</button>
+                    </div>
+                `;
+            });
+        }
+
+        function addGallerySlot() {
+            // Adds a placeholder image until they upload a new one
+            galleryArr.push('https://via.placeholder.com/300x200?text=Upload+New+Image'); 
+            localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
+            renderAdminGallery();
+        }
+
+        function removeGallerySlot(index) {
+            if(confirm("Are you sure you want to remove this gallery image?")) {
+                galleryArr.splice(index, 1);
+                localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
+                renderAdminGallery();
+            }
+        }
+
+        function handleDynamicUpload(event, index) {
+            const file = event.target.files[0];
+            if(!file) return;
             const reader = new FileReader();
             reader.onload = function(e) {
-                const imageDataUrl = e.target.result;
-                // Save base64 string to local storage
-                localStorage.setItem(storageKey, imageDataUrl);
-                // Update local preview
-                document.getElementById(previewId).src = imageDataUrl;
-                showToast('Image uploaded and updated live on website!');
+                galleryArr[index] = e.target.result;
+                localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
+                renderAdminGallery();
+                showToast('Image uploaded & added to Gallery!');
             };
             reader.readAsDataURL(file);
         }
