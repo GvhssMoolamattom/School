@@ -26,11 +26,10 @@
         .logo-box img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--onam-gold); }
         .logo-box h1 { font-size: 1.2rem; font-weight: 800; color: var(--onam-gold); letter-spacing: 0.5px; }
 
-        /* Three-line Hamburger Button */
         .menu-toggle { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 5px; }
         .menu-toggle span { display: block; width: 28px; height: 3px; background-color: var(--onam-gold); border-radius: 2px; transition: 0.3s; }
 
-        /* Side Navigation Drawer (FULLY RESTORED LINKS) */
+        /* Side Navigation Drawer */
         .side-drawer { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.25); z-index: 2000; transition: right 0.4s ease-in-out; display: flex; flex-direction: column; padding: 30px 20px; box-sizing: border-box; }
         .side-drawer.open { right: 0; }
         .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
@@ -43,7 +42,6 @@
         .drawer-btn-special { background: var(--onam-orange); color: #fff !important; text-align: center; margin-top: 10px; }
         .drawer-btn-inaug { background: var(--savage-red); color: #fff !important; text-align: center; font-weight: 800; }
 
-        /* Overlay */
         .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
         .overlay.active { display: block; }
 
@@ -66,7 +64,6 @@
         .hero-flex { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; gap: 30px; }
         .hero-center { flex: 1; min-width: 300px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         
-        /* Vibrant Pookalam & Maveli WebM Container */
         .pookalam-left, .pookalam-right { display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .pookalam-circle {
             width: 130px; height: 130px; border-radius: 50%;
@@ -78,23 +75,16 @@
         }
         @keyframes spinPookalam { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .maveli-video {
-            width: 130px; height: auto; border-radius: 12px;
-            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.35));
-            animation: floatMaveli 3s ease-in-out infinite alternate;
-        }
+        .maveli-video { width: 130px; height: auto; border-radius: 12px; filter: drop-shadow(0 5px 12px rgba(0,0,0,0.35)); animation: floatMaveli 3s ease-in-out infinite alternate; }
         @keyframes floatMaveli { 0% { transform: translateY(0px); } 100% { transform: translateY(-8px); } }
 
-        /* Maveli Banner Featured Right at the Very Top Center of Hero */
         .maveli-top-banner { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; order: 0; }
         .maveli-top-video { width: 150px; height: auto; border-radius: 15px; border: 3px solid var(--onam-gold); box-shadow: 0 8px 20px rgba(0,0,0,0.3); animation: floatMaveli 3s ease-in-out infinite alternate; }
 
-        /* School Name First, Badge & Description Underneath */
         .hero h2 { font-size: 3.2rem; color: var(--onam-green); font-weight: 900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); order: 1; }
         .savage-badge { display: inline-block; background: var(--savage-red); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(213,0,0,0.3); order: 2; }
         .hero p { font-size: 1.15rem; color: #333; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 600; order: 3; }
 
-        /* Container & Clean Solid Cards */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; box-sizing: border-box; }
         .section-title { font-size: 2.1rem; color: var(--onam-green); margin-bottom: 30px; text-align: center; font-weight: 800; }
         .section-title::after { content: ""; display: block; width: 80px; height: 4px; background: var(--onam-gold); margin: 8px auto 0; border-radius: 2px; }
@@ -108,12 +98,11 @@
         .clean-card h3 { font-size: 1.6rem; margin-bottom: 12px; color: var(--onam-green); font-weight: 800; }
         .clean-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; font-weight: 400; }
 
-        /* Clean Tags */
         .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { background: #f1f8f1; color: var(--onam-green); padding: 7px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; border: 1px solid #c8e6c9; transition: all 0.2s; }
         a.tag:hover { background: var(--onam-green); color: #fff; }
 
-        /* Notices Section (FULLY RESTORED) */
+        /* Notices Section */
         .notice-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
         .notice-box { background: #ffffff; padding: 25px; border-radius: 18px; border: 1px solid #e0e0e0; box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
         .notice-box h4 { font-size: 1.15rem; color: var(--savage-red); margin-bottom: 15px; font-family: 'Manjari', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 800; }
@@ -121,12 +110,12 @@
         .notice-list li { padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.95rem; color: #333; line-height: 1.5; font-weight: 500; }
         .notice-list li:last-child { border-bottom: none; }
 
-        /* Gallery Grid */
+        /* Dynamic Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 50px; }
         .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 14px; border: 2px solid var(--onam-gold); transition: transform 0.3s; }
         .gallery-grid img:hover { transform: scale(1.03); }
 
-        /* Footer (FULLY RESTORED) */
+        /* Footer */
         footer { background: var(--onam-green); color: #ffffff; padding: 35px 20px; text-align: center; border-top: 5px solid var(--onam-gold); }
         footer p { font-size: 0.95rem; margin: 6px 0; font-weight: 500; }
 
@@ -251,12 +240,8 @@
 
         <div id="gallery" style="scroll-margin-top: 40px;">
             <h2 class="section-title">Campus Gallery</h2>
-            <div class="gallery-grid">
-                <img id="gal-1" src="assets/gallery1.png" alt="Campus View 1">
-                <img id="gal-2" src="assets/gallery2.png" alt="Campus View 2">
-                <img id="gal-3" src="assets/gallery3.png" alt="Campus View 3">
-                <img id="gal-4" src="assets/gallery4.png" alt="Campus View 4">
-            </div>
+            <div class="gallery-grid" id="dynamic-gallery-container">
+                </div>
         </div>
     </div>
 
@@ -273,19 +258,29 @@
             overlay.classList.toggle('active');
         }
 
-        // FULLY RESTORED LOCALSTORAGE LOGIC
         window.onload = function() {
+            // Load Notices
             document.getElementById('hs-notices').innerHTML = localStorage.getItem('hs-notices') || '<li>No active notices.</li>';
             document.getElementById('vhss-notices').innerHTML = localStorage.getItem('vhss-notices') || '<li>No active notices.</li>';
+            
+            // Load texts & contacts
             document.getElementById('about-text').innerText = localStorage.getItem('about-text') || 'Welcome to GVHSS Moolamattom. Powered by Team Savage for the ultimate Onam vibe experience!';
             document.getElementById('contact-email').innerText = localStorage.getItem('contact-email') || 'info@gvhssmoolamattom.edu';
             document.getElementById('contact-phone').innerText = localStorage.getItem('contact-phone') || '+91 00000 00000';
             
-            // Gallery dynamically updates if changed in admin panel, defaults to .png assets
-            document.getElementById('gal-1').src = localStorage.getItem('gal-1') || 'assets/gallery1.png';
-            document.getElementById('gal-2').src = localStorage.getItem('gal-2') || 'assets/gallery2.png';
-            document.getElementById('gal-3').src = localStorage.getItem('gal-3') || 'assets/gallery3.png';
-            document.getElementById('gal-4').src = localStorage.getItem('gal-4') || 'assets/gallery4.png';
+            // LOAD DYNAMIC GALLERY
+            const galleryContainer = document.getElementById('dynamic-gallery-container');
+            let dynamicGallery = JSON.parse(localStorage.getItem('dynamic-gallery'));
+            
+            // If nothing is set yet, load the default 4 images
+            if (!dynamicGallery || dynamicGallery.length === 0) {
+                dynamicGallery = ['assets/gallery1.png', 'assets/gallery2.png', 'assets/gallery3.png', 'assets/gallery4.png'];
+            }
+            
+            // Render HTML for every image in the array
+            galleryContainer.innerHTML = dynamicGallery.map((src, index) => {
+                return `<img src="${src}" alt="Campus View ${index + 1}">`;
+            }).join('');
         }
     </script>
 </body>
