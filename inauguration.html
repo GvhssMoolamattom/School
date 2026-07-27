@@ -97,7 +97,7 @@
         /* Cinematic Countdown */
         #countdown-screen {
             display: none;
-            font-size: 18rem; /* Made bigger for maximum impact */
+            font-size: 18rem; 
             font-weight: 900;
             color: var(--gold);
             text-shadow: 0 0 60px rgba(255, 193, 7, 0.9);
@@ -150,11 +150,11 @@
 
         .reveal-title {
             font-family: 'Manjari', sans-serif;
-            font-size: 5.5rem;
+            font-size: 5rem;
             color: var(--gold);
             text-transform: uppercase;
             text-shadow: 0 0 30px rgba(255, 193, 7, 0.8), 2px 2px 10px rgba(0,0,0,0.8);
-            margin: 0 0 30px 0;
+            margin: 0 0 20px 0;
             line-height: 1.1;
             opacity: 0;
             animation: fadeInUp 1s ease-out 1.2s forwards;
@@ -169,6 +169,16 @@
             margin-bottom: 40px;
             opacity: 0;
             animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        
+        .celebration-highlight {
+            color: var(--gold); 
+            font-size: 2rem; 
+            display: block; 
+            margin-bottom: 15px; 
+            text-transform: uppercase;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
         }
 
         .inaugurators {
@@ -252,6 +262,7 @@
         @media (max-width: 768px) {
             .event-theme { font-size: 2rem; }
             .reveal-title { font-size: 3.5rem; }
+            .celebration-highlight { font-size: 1.4rem; }
             .festive-msg { font-size: 1.1rem; }
             .inaugurators h3 { font-size: 1.3rem; }
         }
@@ -272,17 +283,18 @@
         <button class="launch-btn" onclick="startInauguration()">✂️ Initiate Grand Launch</button>
     </div>
 
-    <div id="countdown-screen">5</div>
+    <div id="countdown-screen">10</div>
 
     <div id="flash"></div>
 
     <div id="reveal-screen">
         
-        <div class="top-tag">Officially Inaugurated</div>
+        <div class="top-tag">Official Inauguration Of</div>
         
-        <h1 class="reveal-title">GVHSS<br>MOOLAMATTOM<br>DIGITAL HUB</h1>
+        <h1 class="reveal-title">GVHSS MOOLAMATTOM<br>DIGITAL HUB</h1>
         
         <div class="festive-msg">
+            <span class="celebration-highlight">& The Grand Onam Celebration of Our School</span>
             May the spirit of Onam bring unity, prosperity, and joy to our entire school family. 
             Welcome to our brand new digital gateway—a milestone designed to connect, inspire, and elevate our academic journey into the future!
         </div>
@@ -303,7 +315,7 @@
     </div>
 
     <script>
-        let count = 5;
+        let count = 10;
         const launchContainer = document.getElementById('launch-container');
         const countdownScreen = document.getElementById('countdown-screen');
         const revealScreen = document.getElementById('reveal-screen');
