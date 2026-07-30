@@ -3,79 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Details - GVHSS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Details | GVHSS Moolamattom</title>
     <style>
-        :root { --glass-bg: rgba(255, 255, 255, 0.1); --glass-border: rgba(255, 255, 255, 0.2); }
-        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #00b09b); background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: white; min-height: 100vh; }
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        nav { background: rgba(15, 32, 39, 0.6); backdrop-filter: blur(15px); padding: 15px 30px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; }
-        .back-btn { text-decoration: none; color: white; font-weight: 500; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 20px; transition: background 0.3s; }
-        .back-btn:hover { background: rgba(255,255,255,0.2); }
+        :root {
+            --primary-color: #2C3E50; 
+            --accent-color: #FF6B6B; 
+            --button-color: #4ECDC4; 
+            --text-main: #333333;
+        }
 
-        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-        .content-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; padding: 0; line-height: 1.7; color: var(--text-main);
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px);
+            padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: var(--primary-color); text-decoration: none; font-weight: 700; 
+            background: rgba(255,255,255,0.5); padding: 8px 20px; border-radius: 20px; transition: all 0.3s;
+        }
+        nav a:hover { background: var(--accent-color); color: white; transform: scale(1.05); }
+
+        .container {
+            flex: 1;
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 25px;
+            padding: 3rem;
+            border-top: 8px solid var(--accent-color);
+            display: none; 
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-card h2 {
+            color: var(--primary-color); font-size: 2.5rem;
+            margin-top: 0; margin-bottom: 20px;
+        }
         
-        h1 { font-family: 'Playfair Display', serif; color: #a8ff78; font-size: 2.8rem; margin-top: 0; margin-bottom: 20px; }
-        p { font-size: 1.15rem; line-height: 1.8; color: #e0e0e0; font-weight: 300; }
-        
-        .placeholder-img { width: 100%; height: 350px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 1.2rem; }
-        .real-img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 30px; display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border: 1px solid var(--glass-border); }
+        .feature-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            background-color: #e0e0e0;
+        }
+
+        .detail-card p { font-size: 1.15rem; margin-bottom: 15px; }
+
+        footer { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); color: var(--primary-color); text-align: center; padding: 2rem 1rem; border-top: 5px solid var(--accent-color);}
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-btn">← Back to Main Website</a>
+        <a href="index.html">⬅ Back to Home</a>
     </nav>
 
     <div class="container">
-        <div class="content-card">
-            <img id="activity-img" class="real-img" src="" alt="Program Image">
-            <div id="placeholder" class="placeholder-img">No Image Uploaded</div>
-            
-            <h1 id="activity-title">Loading...</h1>
-            <p id="activity-desc">Please wait while we fetch the details.</p>
+        
+        <div class="detail-card" id="webdev">
+            <h2>Web Developer (VHSE)</h2>
+            <img class="feature-image" src="assets/webdev.jpg" alt="Web Development" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+webdev.jpg'">
+            <p><strong>Overview:</strong> This cutting-edge vocational course focuses on the fundamentals and advanced concepts of web design and development. Students learn to build, design, and manage modern websites.</p>
+            <p><strong>Skills Acquired:</strong> HTML, CSS, JavaScript, responsive design, and basic back-end programming. This prepares students for immediate entry into the IT industry or higher studies in Computer Science.</p>
         </div>
+
+        <div class="detail-card" id="dietetic">
+            <h2>Dietetic Aid (VHSE)</h2>
+            <img class="feature-image" src="assets/dietetic.jpg" alt="Dietetic Aid" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+dietetic.jpg'">
+            <p><strong>Overview:</strong> A highly specialized healthcare course aimed at understanding human nutrition, dietary planning, and health management.</p>
+            <p><strong>Skills Acquired:</strong> Students learn meal planning, therapeutic diets, clinical nutrition, and food safety, opening pathways to careers in hospitals and wellness centers.</p>
+        </div>
+
+        <div class="detail-card" id="ltpm">
+            <h2>LTPM (VHSE)</h2>
+            <img class="feature-image" src="assets/ltpm.jpg" alt="LTPM" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+ltpm.jpg'">
+            <p><strong>Overview:</strong> Livestock & Poultry Management provides comprehensive knowledge in the agricultural and veterinary sectors.</p>
+            <p><strong>Skills Acquired:</strong> Animal husbandry, farm management, disease control, and agribusiness operations, promoting self-employment.</p>
+        </div>
+
+        <div class="detail-card" id="class8">
+            <h2>8th Standard</h2>
+            <img class="feature-image" src="assets/class8.jpg" alt="8th Standard" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+class8.jpg'">
+            <p><strong>Overview:</strong> The transition year where students are introduced to more specialized subjects in Science, Mathematics, and Social Sciences under the State Syllabus framework.</p>
+        </div>
+
+        <div class="detail-card" id="class9">
+            <h2>9th Standard</h2>
+            <img class="feature-image" src="assets/class9.jpg" alt="9th Standard" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+class9.jpg'">
+            <p><strong>Overview:</strong> A crucial preparatory year laying the rigorous academic groundwork required for the upcoming board examinations.</p>
+        </div>
+
+        <div class="detail-card" id="class10">
+            <h2>10th Standard (SSLC)</h2>
+            <img class="feature-image" src="assets/class10.jpg" alt="10th Standard" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+class10.jpg'">
+            <p><strong>Overview:</strong> The milestone year. Our faculty provides intensive coaching, regular mock exams, and personalized mentoring to ensure every student achieves excellence in the SSLC Board Exams.</p>
+        </div>
+
+        <div class="detail-card" id="jrc">
+            <h2>Junior Red Cross (JRC)</h2>
+            <img class="feature-image" src="assets/jrc.jpg" alt="JRC" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+jrc.jpg'">
+            <p><strong>Overview:</strong> The JRC unit instills the values of humanitarianism, health awareness, and voluntary service among students. Members participate in first-aid training and health camps.</p>
+        </div>
+
+        <div class="detail-card" id="kites">
+            <h2>Little Kites</h2>
+            <img class="feature-image" src="assets/kites.jpg" alt="Little Kites" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+kites.jpg'">
+            <p><strong>Overview:</strong> KITE initiative to empower students in ICT. Students engage in coding, animation, hardware assembly, and cyber safety workshops.</p>
+        </div>
+
+        <div class="detail-card" id="nature">
+            <h2>Nature Club</h2>
+            <img class="feature-image" src="assets/nature.jpg" alt="Nature Club" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+nature.jpg'">
+            <p><strong>Overview:</strong> Dedicated to environmental conservation. The club organizes tree plantation drives and awareness campaigns for a green campus.</p>
+        </div>
+
+        <div class="detail-card" id="nss">
+            <h2>National Service Scheme (NSS)</h2>
+            <img class="feature-image" src="assets/nss.jpg" alt="NSS" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+nss.jpg'">
+            <p><strong>Overview:</strong> "Not Me But You." The NSS unit develops a student's personality through community service, leadership camps, and social awareness programs.</p>
+        </div>
+
+        <div class="detail-card" id="yip-hs">
+            <h2>Young Innovators Programme (High School)</h2>
+            <img class="feature-image" src="assets/yip-hs.jpg" alt="YIP High School" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+yip-hs.jpg'">
+            <p><strong>Overview:</strong> A flagship initiative to empower young minds to innovate. High school students identify real-world problems and brainstorm creative solutions.</p>
+        </div>
+
+        <div class="detail-card" id="yip-vhse">
+            <h2>Young Innovators Programme (VHSE)</h2>
+            <img class="feature-image" src="assets/yip-vhse.jpg" alt="YIP VHSE" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+yip-vhse.jpg'">
+            <p><strong>Overview:</strong> Students apply their technical vocational skills to develop working prototypes and pitch entrepreneurial ideas.</p>
+        </div>
+
+        <div class="detail-card" id="ojt">
+            <h2>On-the-Job Training (OJT)</h2>
+            <img class="feature-image" src="assets/ojt.jpg" alt="OJT" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+ojt.jpg'">
+            <p><strong>Overview:</strong> A mandatory part of the VHSE curriculum. Students are placed in real work environments to gain hands-on industry experience before graduating.</p>
+        </div>
+
+        <div class="detail-card" id="fieldvisit">
+            <h2>Field Visits</h2>
+            <img class="feature-image" src="assets/fieldvisit.jpg" alt="Field Visits" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+fieldvisit.jpg'">
+            <p><strong>Overview:</strong> We bridge the gap between classroom theory and real-world application by organizing industry visits relevant to the vocational streams.</p>
+        </div>
+
+        <div class="detail-card" id="career">
+            <h2>Career Guidance & Counseling</h2>
+            <img class="feature-image" src="assets/career.jpg" alt="Career Guidance" onerror="this.src='https://via.placeholder.com/800x400?text=Upload+career.jpg'">
+            <p><strong>Overview:</strong> Our dedicated career cell helps students navigate their future with expert seminars, psychometric testing, and one-on-one counseling.</p>
+        </div>
+        
+        <div class="detail-card" id="error-msg">
+            <h2>Page Not Found</h2>
+            <p>Sorry, the information you are looking for could not be found. Please return to the homepage.</p>
+        </div>
+
     </div>
 
+    <footer>
+        <p>&copy; 2026 GVHSS Moolamattom. All rights reserved.</p>
+    </footer>
+
     <script>
-        const activityData = {
-            'kites': { title: "Little Kites", desc: "Kerala Infrastructure and Technology for Education (KITE). This IT club empowers students in areas like programming, hardware, animation, and electronics." },
-            'jrc': { title: "Junior Red Cross (JRC)", desc: "The JRC promotes health, service, and friendship. Students learn first-aid, participate in community service, and develop a strong sense of empathy." },
-            'nature': { title: "Nature Club", desc: "Dedicated to environmental protection and awareness. Students engage in tree planting, eco-friendly campaigns, and preserve ecosystems." },
-            'ogt': { title: "On-the-Job Training (OGT)", desc: "A core part of our Vocational curriculum. OGT provides students with real-world industry experience, bridging the gap between theory and practice." },
-            'field': { title: "Field Visits", desc: "Taking education beyond the classroom walls. We organize regular educational tours to industries and institutions for practical insights." },
-            'yip': { title: "Young Innovators Programme (YIP)", desc: "An initiative to empower young minds to innovate. Students are encouraged to identify problems and develop practical solutions." },
-            'nss': { title: "National Service Scheme (NSS)", desc: "'Not Me But You.' The NSS develops student personality through community service, social work, camps, and leadership training." },
-            'wde': { title: "Web Developer (WDE)", desc: "A highly demanded technical course focused on modern web development. Students learn the foundational languages of the internet—HTML, CSS, and JavaScript—along with graphic design basics to build dynamic, professional websites and applications." },
-            'ltr': { title: "Lab Technician (LTR)", desc: "A vital healthcare vocational program. Students are trained in clinical laboratory procedures, gaining hands-on experience in diagnostic testing, medical equipment operation, chemistry, and strict lab safety protocols." },
-            
-            // Replaced the title to just say "DIA"
-            'dia': { title: "DIA", desc: "" }
-        };
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestedItem = urlParams.get('item');
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const activityId = urlParams.get('id');
-
-        if (activityId && activityData[activityId]) {
-            document.getElementById('activity-title').innerText = activityData[activityId].title;
-            document.getElementById('activity-desc').innerText = activityData[activityId].desc;
-
-            const savedImage = localStorage.getItem(activityId + '-img');
-            const imgElement = document.getElementById('activity-img');
-            const placeholderElement = document.getElementById('placeholder');
-
-            if (savedImage && savedImage.trim() !== "") {
-                imgElement.src = savedImage;
-                imgElement.style.display = 'block';
-                placeholderElement.style.display = 'none';
+            if (requestedItem) {
+                const cardToShow = document.getElementById(requestedItem);
+                if (cardToShow) {
+                    cardToShow.style.display = 'block';
+                } else {
+                    document.getElementById('error-msg').style.display = 'block';
+                }
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
             }
-        } else {
-            document.getElementById('activity-title').innerText = "Program Not Found";
-            document.getElementById('activity-desc').innerText = "Sorry, we couldn't find the details for this specific program.";
-        }
+        });
     </script>
 </body>
 </html>

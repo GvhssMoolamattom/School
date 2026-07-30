@@ -3,181 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - GVHSS Moolamattom</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Admin Terminal | GVHSS Moolamattom</title>
     <style>
-        :root { --primary-green: #114216; --accent-gold: #ffc107; --savage-red: #d50000; --bg-light: #f4f6f8; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: #333; }
-        header { background: var(--primary-green); color: #fff; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-        header h1 { margin: 0; font-size: 1.4rem; color: var(--accent-gold); font-weight: 800; }
-        .logout-btn { background: var(--savage-red); color: #fff; padding: 8px 18px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
-        
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .admin-card { background: #ffffff; border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .admin-card h2 { margin-top: 0; color: var(--primary-green); font-size: 1.3rem; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #4a5568; }
-        textarea, input[type="text"], input[type="email"], input[type="file"] { width: 100%; padding: 12px; border: 2px solid #cbd5e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; outline: none; }
-        textarea:focus, input[type="text"]:focus { border-color: var(--accent-gold); }
-        .help-text { font-size: 0.8rem; color: #718096; margin-top: 5px; }
-        
-        .btn { border: none; padding: 12px 25px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
-        .save-btn { background: var(--primary-green); color: var(--accent-gold); }
-        .save-btn:hover { background: #0b3d0b; }
-        .add-btn { background: var(--accent-gold); color: #111; padding: 6px 15px; font-size: 0.85rem; border-radius: 20px; }
-        .remove-btn { background: #fee2e2; color: #b91c1c; padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; margin-top: 10px; width: 100%; border: none; cursor: pointer; font-weight: 700; }
+        /* --- OLD SCHOOL CRT TERMINAL THEME --- */
+        :root {
+            --term-green: #00FF41;
+            --term-bg: #000000;
+            --term-dim: #008F11;
+        }
 
-        /* Dynamic Gallery Grid */
-        .gallery-upload-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .gallery-upload-item { background: #f8fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 15px; text-align: center; position: relative; }
-        .gallery-preview { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; background: #e2e8f0; }
+        body {
+            background-color: var(--term-bg);
+            color: var(--term-green);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        /* Parent Messages */
-        .message-box { background: #f1f8f1; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-green); margin-bottom: 15px; }
-        .message-box h4 { margin: 0 0 5px 0; color: var(--primary-green); }
-        .message-box span { font-size: 0.85rem; color: #555; }
-        .message-box p { margin: 10px 0 0 0; font-size: 0.95rem; }
+        /* Subtle scanline effect overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-        .toast { position: fixed; bottom: 20px; right: 20px; background: var(--primary-green); color: #fff; padding: 12px 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; font-weight: 600; z-index: 9999; }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin-top: 2rem;
+            z-index: 10;
+        }
+
+        h2 {
+            border-bottom: 2px dashed var(--term-green);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Form & Button Styling */
+        input, textarea, button {
+            background-color: var(--term-bg);
+            color: var(--term-green);
+            border: 1px solid var(--term-green);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+            text-shadow: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--term-green);
+        }
+
+        button {
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            width: auto;
+            padding: 10px 30px;
+        }
+
+        button:hover {
+            background-color: var(--term-green);
+            color: var(--term-bg);
+        }
+
+        .warning-btn {
+            border-color: #FF0000;
+            color: #FF0000;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        .warning-btn:hover {
+            background-color: #FF0000;
+            color: var(--term-bg);
+        }
+
+        /* Suggestion Box */
+        .suggestion-box {
+            border: 1px dashed var(--term-dim);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .suggestion-box h4 {
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+        .date {
+            float: right;
+            font-size: 0.8rem;
+            color: var(--term-dim);
+        }
+
+        nav {
+            width: 100%;
+            padding: 15px;
+            border-bottom: 2px solid var(--term-green);
+            text-align: left;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+        nav a {
+            color: var(--term-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: var(--term-green);
+            color: var(--term-bg);
+        }
+        
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>GVHSS Moolamattom — Admin Portal</h1>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-    </header>
+    <nav>
+        <a href="index.html">[ EXIT SYSTEM (LOGOUT) ]</a>
+        <span style="float: right;">SYS.ADMIN_TERMINAL_V1.0</span>
+    </nav>
 
     <div class="container">
         
-        <div class="admin-card">
-            <h2>Parents Portal Feedback / Suggestions</h2>
-            <div id="parentMessagesList">
-                </div>
+        <h2 class="blink">>>> SYSTEM ACCESS GRANTED</h2>
+
+        <div style="margin-bottom: 40px;">
+            <h3>[ DIRECTIVE: UPDATE NOTICES ]</h3>
+            <p>Input data using standard HTML formatting (&lt;li&gt;Notice&lt;/li&gt;).</p>
+            
+            <label>> HIGH_SCHOOL_DATA_STREAM:</label>
+            <textarea id="hsNotices" rows="4"></textarea>
+            
+            <label style="display:block; margin-top:15px;">> VHSE_DATA_STREAM:</label>
+            <textarea id="vhseNotices" rows="4"></textarea>
+            
+            <br>
+            <button onclick="saveNotices()">[ EXECUTE SAVE ]</button>
+            <span id="save-msg" style="margin-left: 15px; display: none;" class="blink">DATA UPLOADED SUCCESSFULLY.</span>
         </div>
 
-        <div class="admin-card">
-            <h2>Manage Notice Boards</h2>
-            <div class="form-group">
-                <label for="hsNotices">High School Notices</label>
-                <textarea id="hsNotices" rows="4" placeholder="<li>Sample Notice 1</li>"></textarea>
-                <div class="help-text">Wrap each notice in &lt;li&gt; and &lt;/li&gt; tags.</div>
-            </div>
-            <div class="form-group">
-                <label for="vhssNotices">VHSS (Vocational) Notices</label>
-                <textarea id="vhssNotices" rows="4" placeholder="<li>Sample Notice 1</li>"></textarea>
-                <div class="help-text">Wrap each notice in &lt;li&gt; and &lt;/li&gt; tags.</div>
-            </div>
-            <button class="btn save-btn" onclick="saveNotices()">Update Notices 🚀</button>
-        </div>
-
-        <div class="admin-card">
-            <h2>
-                Manage Campus Gallery 
-                <button class="btn add-btn" onclick="addGallerySlot()">+ Add New Image Slot</button>
-            </h2>
-            <div class="gallery-upload-grid" id="gallery-upload-grid">
+        <div>
+            <h3>[ DIRECTIVE: READ INBOX ]</h3>
+            <div id="suggestion-container">
                 </div>
+            <br>
+            <button onclick="clearSuggestions()" class="warning-btn">[ PURGE ALL SUGGESTIONS ]</button>
         </div>
 
     </div>
 
-    <div class="toast" id="toast">Saved Successfully!</div>
-
     <script>
-        // Guard check for admin login
-        if (localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'login.html'; }
-        function logout() { localStorage.removeItem('isAdmin'); window.location.href = 'login.html'; }
+        // Load data as soon as the page opens
+        document.addEventListener("DOMContentLoaded", function() {
+            loadNotices();
+            loadSuggestions();
+        });
 
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg; toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        function saveNotices() {
+            const hs = document.getElementById('hsNotices').value;
+            const vhse = document.getElementById('vhseNotices').value;
+            
+            localStorage.setItem('hs_notices', hs);
+            localStorage.setItem('vhse_notices', vhse);
+
+            document.getElementById('save-msg').style.display = 'inline';
+            setTimeout(() => { document.getElementById('save-msg').style.display = 'none'; }, 2000);
         }
 
-        // --- GLOBAL ARRAYS ---
-        let galleryArr = JSON.parse(localStorage.getItem('dynamic-gallery')) || [
-            'assets/gallery1.png', 'assets/gallery2.png', 'assets/gallery3.png', 'assets/gallery4.png'
-        ];
+        function loadNotices() {
+            document.getElementById('hsNotices').value = localStorage.getItem('hs_notices') || "<li><strong>Upcoming:</strong> Little Kites Coding Camp registrations open.</li><li><strong>August 25:</strong> First Terminal Examination begins.</li>";
+            document.getElementById('vhseNotices').value = localStorage.getItem('vhse_notices') || "<li><strong>Upcoming:</strong> OJT schedules for Web Developer batch released.</li><li><strong>August 25:</strong> First Terminal Examination begins.</li>";
+        }
 
-        window.onload = function() {
-            // Load Notices
-            document.getElementById('hsNotices').value = localStorage.getItem('hs-notices') || '';
-            document.getElementById('vhssNotices').value = localStorage.getItem('vhss-notices') || '';
-            
-            // Load Parent Messages
-            loadParentMessages();
-            // Load Gallery Grid
-            renderAdminGallery();
-        };
+        function loadSuggestions() {
+            const container = document.getElementById('suggestion-container');
+            const suggestions = JSON.parse(localStorage.getItem('school_suggestions')) || [];
 
-        // --- PARENT MESSAGES LOGIC ---
-        function loadParentMessages() {
-            const messages = JSON.parse(localStorage.getItem('parent-messages')) || [];
-            const container = document.getElementById('parentMessagesList');
-            if(messages.length === 0) {
-                container.innerHTML = '<p style="color:#777;">No suggestions submitted from parents yet.</p>';
+            if(suggestions.length === 0) {
+                container.innerHTML = "<p>INBOX EMPTY. NO NEW SUGGESTIONS.</p>";
                 return;
             }
-            container.innerHTML = messages.map(msg => `
-                <div class="message-box">
-                    <h4>${msg.name}</h4>
-                    <span>Contact: ${msg.contact} | Date: ${msg.date}</span>
-                    <p>${msg.suggestion}</p>
-                </div>
-            `).join('');
-        }
 
-        // --- NOTICES LOGIC ---
-        function saveNotices() {
-            localStorage.setItem('hs-notices', document.getElementById('hsNotices').value.trim());
-            localStorage.setItem('vhss-notices', document.getElementById('vhssNotices').value.trim());
-            showToast('Notice Boards updated!');
-        }
-
-        // --- DYNAMIC GALLERY LOGIC ---
-        function renderAdminGallery() {
-            const container = document.getElementById('gallery-upload-grid');
-            container.innerHTML = '';
-            galleryArr.forEach((src, index) => {
+            container.innerHTML = ""; 
+            suggestions.forEach(s => {
                 container.innerHTML += `
-                    <div class="gallery-upload-item">
-                        <h4 style="margin:0 0 10px 0; color:#4a5568;">Image ${index + 1}</h4>
-                        <img class="gallery-preview" src="${src}" alt="Preview ${index + 1}">
-                        <input type="file" accept="image/*" onchange="handleDynamicUpload(event, ${index})">
-                        <button class="remove-btn" onclick="removeGallerySlot(${index})">❌ Remove</button>
+                    <div class="suggestion-box">
+                        <span class="date">${s.date}</span>
+                        <h4>FROM: ${s.parent} (STUDENT_ID: ${s.student})</h4>
+                        <p>> "${s.text}"</p>
                     </div>
                 `;
             });
         }
 
-        function addGallerySlot() {
-            // Adds a placeholder image until they upload a new one
-            galleryArr.push('https://via.placeholder.com/300x200?text=Upload+New+Image'); 
-            localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
-            renderAdminGallery();
-        }
-
-        function removeGallerySlot(index) {
-            if(confirm("Are you sure you want to remove this gallery image?")) {
-                galleryArr.splice(index, 1);
-                localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
-                renderAdminGallery();
+        function clearSuggestions() {
+            if(confirm("WARNING: Are you sure you want to permanently delete all parent suggestions?")) {
+                localStorage.removeItem('school_suggestions');
+                loadSuggestions();
             }
-        }
-
-        function handleDynamicUpload(event, index) {
-            const file = event.target.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                galleryArr[index] = e.target.result;
-                localStorage.setItem('dynamic-gallery', JSON.stringify(galleryArr));
-                renderAdminGallery();
-                showToast('Image uploaded & added to Gallery!');
-            };
-            reader.readAsDataURL(file);
         }
     </script>
 </body>
