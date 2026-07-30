@@ -123,7 +123,7 @@
         .nav-highlight { background: var(--button-color) !important; color: white !important; margin: 10px 15px; border-radius: 12px; text-align: center; border: none !important;}
         .nav-launch { background: linear-gradient(45deg, var(--accent-color), #ff8c00) !important; color: #111 !important; margin: 10px 15px; border-radius: 12px; text-align: center; font-weight: 900 !important; border: none !important;}
 
-        /* --- HEADER & MAVELI BANNER --- */
+        /* --- HEADER & MAVELI CONTAINER --- */
         header { padding: 4rem 1rem 2rem 1rem; text-align: center; color: var(--primary-color); position: relative; z-index: 1; }
         .header-content { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         
@@ -143,7 +143,7 @@
         header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-shadow: 2px 2px 4px rgba(255,255,255,0.8); }
         header h2 { margin: 0; font-size: clamp(1rem, 2.5vw, 1.3rem); background: rgba(255, 255, 255, 0.9); padding: 6px 20px; border-radius: 30px; display: inline-block; color: var(--button-color); font-weight: bold; border: 1px solid var(--accent-color);}
 
-        /* MAVELI GIF CONTAINER */
+        /* MAVELI WEBM CONTAINER */
         .maveli-container {
             text-align: center;
             margin: 1.5rem auto;
@@ -151,7 +151,7 @@
             z-index: 1;
         }
 
-        .maveli-gif {
+        .maveli-video {
             max-width: 280px;
             width: 100%;
             height: auto;
@@ -263,7 +263,10 @@
         </header>
 
         <div class="maveli-container">
-            <img src="assets/maveli.gif" alt="King Mahabali Welcoming Onam" class="maveli-gif" onerror="this.src='https://via.placeholder.com/280x200?text=Maveli+GIF+Here'">
+            <video class="maveli-video" autoplay loop muted playsinline>
+                <source src="assets/maveli.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <section id="about" class="glass-panel">
