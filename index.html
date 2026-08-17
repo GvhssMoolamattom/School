@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GVHSS Moolamattom | Official Portal</title>
+    <title>GVHSS Moolamattom | Happy Onam!</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- BALANCED ONAM GRADIENT & GLASS PALETTE --- */
+        /* --- ULTRA LIQUID GLASS ONAM PALETTE --- */
         :root {
-            --onam-green: #0a4a25;       /* Rich traditional green */
-            --onam-light-green: #157a3e; /* Brighter green for gradients */
-            --onam-yellow: #FFD700;      /* Marigold Yellow */
-            --onam-gold: #FFB300;        /* Kasavu Gold */
-            --maroon: #8b0000;           /* Deep traditional red */
-            --text-dark: #222222;        /* Dark text for visibility */
-            --glass-bg: rgba(255, 255, 255, 0.75); /* Frosted liquid glass */
-            --glass-border: rgba(255, 255, 255, 0.6); 
+            --onam-green: #0a4a25;       
+            --onam-light-green: #157a3e; 
+            --onam-yellow: #FFD700;      
+            --onam-gold: #FFB300;        
+            --maroon: #8b0000;           
+            --text-dark: #1a1a1a;        
+            
+            /* Liquid Glass Variables */
+            --liquid-bg: rgba(255, 255, 255, 0.25); 
+            --liquid-border-light: rgba(255, 255, 255, 0.8);
+            --liquid-border-dark: rgba(255, 255, 255, 0.2);
+            --liquid-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            --liquid-inner-glow: inset 0 0 30px rgba(255, 255, 255, 0.6);
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0; line-height: 1.7; color: var(--text-dark);
-            background: linear-gradient(-45deg, #fdfbf7, #fff4cc, #e6f2e8, #fdfbf7);
+            /* Rich, highly saturated animated background so the glass effect pops */
+            background: linear-gradient(-45deg, #a8e063, #fdfbf7, #ffd700, #56ab2f);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 20s ease infinite;
             background-attachment: fixed;
             overflow-x: hidden;
             box-sizing: border-box;
@@ -36,234 +42,208 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- THE MALA (GARLAND) PNG SPACES - FULLY RESPONSIVE --- */
+        /* --- THE MALA (GARLAND) PNG SPACES --- */
         .mala-top {
-            position: fixed; top: 0; left: 0; width: 100%; 
-            height: clamp(50px, 8vw, 100px); /* Scales smoothly across all devices */
-            background-image: url('assets/mala-top.png');
-            background-repeat: repeat-x; background-size: contain; background-position: top center;
-            z-index: 9999; pointer-events: none;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));
+            position: fixed; top: 0; left: 0; width: 100%; height: clamp(50px, 8vw, 100px); 
+            background-image: url('assets/mala-top.png'); background-repeat: repeat-x; background-size: contain; background-position: top center;
+            z-index: 9999; pointer-events: none; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
-
         .mala-left {
-            position: fixed; top: 0; left: 0; height: 100vh;
-            width: clamp(25px, 6vw, 80px); /* Scales smoothly across all devices */
-            background-image: url('assets/mala-side.png');
-            background-repeat: repeat-y; background-size: contain;
-            z-index: 9998; pointer-events: none;
-            filter: drop-shadow(5px 0 10px rgba(0,0,0,0.15));
+            position: fixed; top: 0; left: 0; height: 100vh; width: clamp(25px, 6vw, 80px); 
+            background-image: url('assets/mala-side.png'); background-repeat: repeat-y; background-size: contain;
+            z-index: 9998; pointer-events: none; filter: drop-shadow(5px 0 15px rgba(0,0,0,0.3));
         }
-
         .mala-right {
-            position: fixed; top: 0; right: 0; height: 100vh;
-            width: clamp(25px, 6vw, 80px); /* Scales smoothly across all devices */
-            background-image: url('assets/mala-side.png');
-            background-repeat: repeat-y; background-size: contain; background-position: right;
-            z-index: 9998; pointer-events: none;
-            filter: drop-shadow(-5px 0 10px rgba(0,0,0,0.15));
+            position: fixed; top: 0; right: 0; height: 100vh; width: clamp(25px, 6vw, 80px); 
+            background-image: url('assets/mala-side.png'); background-repeat: repeat-y; background-size: contain; background-position: right;
+            z-index: 9998; pointer-events: none; filter: drop-shadow(-5px 0 15px rgba(0,0,0,0.3));
         }
 
-        /* --- RESPONSIVE WRAPPER --- */
-        /* Dynamic padding ensures content NEVER touches the malas on any screen size */
         .main-wrapper {
-            padding-top: clamp(80px, 12vw, 140px);
-            padding-left: clamp(40px, 8vw, 100px);
-            padding-right: clamp(40px, 8vw, 100px);
-            padding-bottom: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-sizing: border-box;
+            padding-top: clamp(80px, 12vw, 140px); padding-left: clamp(40px, 8vw, 100px);
+            padding-right: clamp(40px, 8vw, 100px); padding-bottom: 40px;
+            max-width: 1200px; margin: 0 auto; box-sizing: border-box;
         }
 
-        /* --- GLOWING GOLDEN POLLEN PARTICLES --- */
-        #particle-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; 
-        }
-
+        /* --- LIQUID LIGHT PARTICLES (Bubbles) --- */
+        #particle-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .glow-mote {
-            position: absolute; top: -10vh; 
-            border-radius: 50%; 
-            background: var(--onam-yellow);
-            box-shadow: 0 0 8px var(--onam-yellow), 0 0 15px var(--onam-gold);
-            opacity: 0.5; animation: floatUp linear infinite;
+            position: absolute; top: -10vh; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255,255,255,0.8);
+            backdrop-filter: blur(5px);
+            opacity: 0.6; animation: floatUp linear infinite;
         }
-
         @keyframes floatUp {
             0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
-            50% { opacity: 0.7; }
+            50% { opacity: 1; }
             100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
         }
 
-        /* --- HAMBURGER & NAV --- */
-        /* Hamburger position adjusts based on screen size so it avoids the right mala */
+        /* --- HAMBURGER & NAV (ULTRA GLASS) --- */
         .top-bar { position: fixed; top: clamp(15px, 4vw, 25px); right: clamp(35px, 8vw, 100px); z-index: 10000; }
         .hamburger {
-            font-size: clamp(1.5rem, 3vw, 2rem); color: var(--onam-green);
-            background: rgba(255,255,255,0.9); border: 2px solid var(--onam-gold);
+            font-size: clamp(1.5rem, 3vw, 2rem); color: var(--onam-green); 
+            background: var(--liquid-bg); backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid var(--liquid-border-dark); border-top: 2px solid var(--liquid-border-light); border-left: 2px solid var(--liquid-border-light);
             width: clamp(45px, 6vw, 55px); height: clamp(45px, 6vw, 55px); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; box-shadow: var(--liquid-shadow);
         }
-        .hamburger:hover { transform: scale(1.1); background: var(--onam-yellow); }
+        .hamburger:hover { transform: scale(1.1); background: rgba(255,255,255,0.5); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5); }
 
         .nav-links {
             position: fixed; top: 0; right: -100%; width: clamp(260px, 80vw, 300px); height: 100vh;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.15); border-left: 4px solid var(--onam-gold);
-            display: flex; flex-direction: column; padding-top: 100px;
-            transition: right 0.4s ease-in-out; z-index: 9997;
+            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.2), inset 10px 0 30px rgba(255,255,255,0.5); border-left: 2px solid var(--liquid-border-light);
+            display: flex; flex-direction: column; padding-top: 100px; transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 9997;
         }
         .nav-links.active { right: 0; }
-        .nav-links a { 
-            color: var(--onam-green); text-decoration: none; font-weight: 800; 
-            padding: 15px 30px; border-bottom: 1px solid rgba(0, 0, 0, 0.05); transition: 0.3s; 
-        }
-        .nav-links a:hover { background: rgba(255, 215, 0, 0.2); padding-left: 40px; color: var(--maroon); }
-        .nav-launch { background: linear-gradient(45deg, var(--onam-yellow), var(--onam-gold)) !important; color: #111 !important; margin: 15px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(255,179,0,0.3); }
+        .nav-links a { color: var(--onam-green); text-decoration: none; font-weight: 900; padding: 15px 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; text-shadow: 0 2px 5px rgba(255,255,255,0.8); }
+        .nav-links a:hover { background: rgba(255, 255, 255, 0.5); padding-left: 40px; color: var(--maroon); }
+        .nav-launch { background: linear-gradient(135deg, rgba(255,215,0,0.8), rgba(255,179,0,0.8)) !important; color: #111 !important; margin: 15px; border-radius: 20px; text-align: center; box-shadow: 0 8px 20px rgba(255,179,0,0.4); border-top: 2px solid white; border-left: 2px solid white;}
 
-        /* --- SCROLL REVEAL ANIMATION --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- LIQUID GLASS SECTIONS --- */
-        section, header {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-top: 4px solid var(--onam-gold);
-            border-radius: 20px;
-            padding: clamp(1.5rem, 4vw, 3rem); /* Responsive padding inside sections */
-            margin-bottom: clamp(1.5rem, 4vw, 3rem);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05), inset 0 0 15px rgba(255,255,255,0.5);
+        /* --- THE CORE ULTRA LIQUID GLASS STYLE --- */
+        .ultra-glass {
+            background: var(--liquid-bg);
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(30px) saturate(150%);
+            border: 1px solid var(--liquid-border-dark);
+            border-top: 2px solid var(--liquid-border-light);
+            border-left: 2px solid var(--liquid-border-light);
+            box-shadow: var(--liquid-shadow), var(--liquid-inner-glow);
+            border-radius: 30px;
             position: relative; z-index: 1;
         }
+
+        section, header {
+            padding: clamp(2rem, 4vw, 3.5rem); margin-bottom: clamp(2rem, 4vw, 3.5rem);
+        }
         
-        /* HEADER TWEAKS */
-        header { text-align: center; border-top: none; background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,244,204,0.85)); }
+        header { text-align: center; border-radius: 40px; }
         .logo-img {
             width: clamp(100px, 15vw, 140px); height: clamp(100px, 15vw, 140px); object-fit: contain;
-            background: white; border: 4px dashed var(--onam-gold); border-radius: 50%;
-            padding: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); margin-bottom: 15px;
+            background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
+            border-top: 3px solid white; border-left: 3px solid white; border-bottom: 1px solid rgba(0,0,0,0.1); border-right: 1px solid rgba(0,0,0,0.1);
+            border-radius: 50%; padding: 15px; box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255,255,255,0.8); margin-bottom: 20px;
         }
-        header h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: clamp(1.8rem, 6vw, 4.5rem); color: var(--onam-green); text-shadow: 1px 1px 0px rgba(255,255,255,0.8); line-height: 1.2;}
-        header h2 { margin: 10px 0 0 0; font-size: clamp(1rem, 3vw, 1.5rem); color: var(--maroon); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+        header h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: clamp(1.8rem, 6vw, 4.5rem); color: var(--onam-green); text-shadow: 2px 2px 10px rgba(255,255,255,0.9); line-height: 1.2;}
+        header h2 { margin: 10px 0 0 0; font-size: clamp(1rem, 3vw, 1.5rem); color: var(--maroon); font-weight: 900; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(255,255,255,0.8); }
 
-        .section-title { 
-            font-family: 'Playfair Display', serif; color: var(--onam-green); 
-            font-size: clamp(1.8rem, 5vw, 2.5rem); margin-top: 0; border-bottom: 2px dashed var(--onam-gold); 
-            padding-bottom: 10px; display: inline-block; margin-bottom: 20px; 
-        }
+        .section-title { font-family: 'Playfair Display', serif; color: var(--onam-green); font-size: clamp(1.8rem, 5vw, 2.5rem); margin-top: 0; border-bottom: 2px solid rgba(255,255,255,0.6); padding-bottom: 10px; display: inline-block; margin-bottom: 25px; text-shadow: 0 2px 15px rgba(255,255,255,0.8); }
 
-        /* MAVELI WEBM */
         .maveli-container { text-align: center; margin: clamp(1rem, 3vw, 2rem) auto; position: relative; z-index: 1; }
         .maveli-video {
-            max-width: clamp(200px, 60vw, 300px); width: 100%; height: auto; border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 5px solid var(--onam-yellow);
-            background: rgba(255,255,255,0.8);
+            max-width: clamp(200px, 60vw, 300px); width: 100%; height: auto; border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.5); 
+            border-top: 3px solid rgba(255,255,255,0.9); border-left: 3px solid rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.3); backdrop-filter: blur(15px);
         }
 
-        /* --- QUICK STATS --- */
-        .stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
+        .stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
         .stat-box { 
-            flex: 1 1 150px; /* Adapts cleanly on phones */
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,215,0,0.1)); 
-            padding: 20px 15px; border-radius: 20px; 
-            border: 1px solid var(--onam-yellow); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
+            flex: 1 1 150px; padding: 25px 15px; transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .stat-box:hover { transform: translateY(-5px); border-color: var(--onam-green); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .stat-number { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; color: var(--onam-green); margin: 0; line-height: 1; }
-        .stat-label { font-size: clamp(0.9rem, 2vw, 1rem); font-weight: 800; color: var(--maroon); text-transform: uppercase; margin-top: 8px; letter-spacing: 1px; }
+        .stat-box:hover { transform: translateY(-10px) scale(1.02); background: rgba(255,255,255,0.45); box-shadow: 0 15px 35px rgba(0,0,0,0.15), inset 0 0 40px rgba(255,255,255,1); }
+        .stat-number { font-size: clamp(2.5rem, 6vw, 3.8rem); font-weight: 900; color: var(--onam-green); margin: 0; line-height: 1; text-shadow: 2px 2px 10px rgba(255,255,255,1); }
+        .stat-label { font-size: clamp(0.9rem, 2vw, 1rem); font-weight: 900; color: var(--maroon); text-transform: uppercase; margin-top: 10px; letter-spacing: 1px; }
 
-        /* --- ACADEMICS & CLUBS --- */
-        .split-container { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px; }
+        .split-container { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 15px; }
         .split-column {
-            flex: 1 1 100%; /* Will stack on mobile, side-by-side on PC */
-            background: rgba(255, 255, 255, 0.6); padding: clamp(15px, 4vw, 25px);
-            border-radius: 16px; border-left: 6px solid var(--onam-gold); box-sizing: border-box;
-            text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            flex: 1 1 100%; text-align: left; padding: clamp(20px, 4vw, 30px);
         }
-        @media (min-width: 768px) {
-            .split-column { flex: 1 1 280px; }
-        }
+        @media (min-width: 768px) { .split-column { flex: 1 1 280px; } }
 
-        h3 { color: var(--onam-green); font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 0; font-weight: 800; }
-
-        .button-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        h3 { color: var(--onam-green); font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 0; font-weight: 900; text-shadow: 0 2px 10px rgba(255,255,255,0.8); }
+        .button-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        
         .activity-btn {
-            background: linear-gradient(45deg, var(--onam-green), var(--onam-light-green)); color: white; padding: 8px 18px; border-radius: 30px; text-decoration: none;
-            font-weight: bold; font-size: 0.9rem; border: none; transition: 0.3s; box-shadow: 0 4px 10px rgba(10, 74, 37, 0.2);
+            background: rgba(255,255,255,0.4); color: var(--onam-green); padding: 10px 22px; border-radius: 30px; text-decoration: none;
+            font-weight: 900; font-size: 0.95rem; transition: 0.3s; 
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(255,255,255,0.9); border-left: 2px solid rgba(255,255,255,0.9); border-bottom: 1px solid rgba(0,0,0,0.1); border-right: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-shadow: 0 1px 5px rgba(255,255,255,0.8);
         }
-        .activity-btn:hover { background: linear-gradient(45deg, var(--onam-yellow), var(--onam-gold)); color: var(--text-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4); }
+        .activity-btn:hover { background: rgba(255, 215, 0, 0.6); color: var(--maroon); transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0,0,0,0.15), inset 0 0 15px rgba(255,255,255,0.8); }
 
-        /* --- LEADERS & STAFF --- */
         .leader-img {
-            width: clamp(100px, 20vw, 130px); height: clamp(100px, 20vw, 130px); object-fit: cover;
-            border-radius: 50%; border: 4px solid var(--onam-gold);
-            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: clamp(110px, 20vw, 140px); height: clamp(110px, 20vw, 140px); object-fit: cover;
+            border-radius: 30px; margin-bottom: 20px; 
+            border-top: 3px solid rgba(255,255,255,0.9); border-left: 3px solid rgba(255,255,255,0.9);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-        .leader-text { font-style: italic; color: #444; line-height: 1.6; margin-top: 10px; font-size: 0.95rem; }
+        .leader-text { font-style: italic; color: #222; line-height: 1.7; margin-top: 15px; font-size: 1rem; font-weight: 600; text-shadow: 0 1px 2px rgba(255,255,255,0.5);}
 
         .wing-header {
-            background: linear-gradient(90deg, var(--onam-green), var(--maroon));
-            color: white; padding: 12px 20px; border-radius: 10px; font-size: clamp(1.1rem, 3vw, 1.5rem);
-            font-family: 'Playfair Display', serif; margin: 30px 0 20px 0;
-            border-left: 6px solid var(--onam-yellow); text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.5); color: var(--maroon); padding: 15px 25px; border-radius: 20px; font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-family: 'Playfair Display', serif; margin: 40px 0 25px 0; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+            backdrop-filter: blur(15px); border-top: 2px solid white; border-left: 2px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-shadow: 0 2px 10px rgba(255,255,255,0.8);
         }
         
         .team-leader-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,244,204,0.7));
-            border: 2px solid var(--onam-gold);
-            padding: 15px 20px; border-radius: 15px; margin-bottom: 20px;
-            display: block; border-left: 8px solid var(--onam-green); text-align: left;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px; display: block; text-align: left; padding: 25px;
         }
-        .leader-name { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 900; color: var(--onam-green); margin: 0 0 5px 0; }
-        .leader-designation { font-size: clamp(0.85rem, 2vw, 1rem); color: var(--maroon); font-weight: 800; margin: 0 0 10px 0; text-transform: uppercase; }
-        .led-by-text { font-size: 0.9rem; font-style: italic; color: #555; margin: 0; border-top: 1px dashed var(--onam-gold); padding-top: 8px;}
+        .leader-name { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 900; color: var(--onam-green); margin: 0 0 5px 0; text-shadow: 0 2px 10px rgba(255,255,255,0.8); }
+        .leader-designation { font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--maroon); font-weight: 800; margin: 0 0 15px 0; text-transform: uppercase; }
+        .led-by-text { font-size: 0.95rem; font-style: italic; color: #444; margin: 0; border-top: 1px solid rgba(255,255,255,0.5); padding-top: 12px; font-weight: 600;}
 
-        .sub-category {
-            color: var(--onam-green); font-size: clamp(1.1rem, 3vw, 1.2rem); border-bottom: 3px solid var(--onam-yellow);
-            display: inline-block; margin-bottom: 15px; padding-bottom: 5px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px;
-        }
-        .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; text-align: left; margin-bottom: 30px;}
+        .sub-category { color: var(--onam-green); font-size: clamp(1.1rem, 3vw, 1.3rem); border-bottom: 3px solid rgba(255,255,255,0.6); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(255,255,255,0.8);}
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; text-align: left; margin-bottom: 40px;}
         .staff-card { 
-            background: rgba(255,255,255,0.7); padding: 15px; border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.9); border-left: 5px solid var(--onam-gold); 
-            transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            padding: 20px; transition: 0.4s; 
         }
-        .staff-card:hover { transform: translateY(-3px); background: white; border-color: var(--onam-green); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        .staff-name { font-size: 1.05rem; font-weight: 800; color: var(--onam-green); margin: 0 0 5px 0; }
-        .staff-role { font-size: 0.85rem; color: #555; margin: 0; font-weight: 600; line-height: 1.4; text-transform: capitalize; }
+        .staff-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.1), inset 0 0 25px rgba(255,255,255,0.8); }
+        .staff-name { font-size: 1.1rem; font-weight: 900; color: var(--onam-green); margin: 0 0 8px 0; text-shadow: 0 2px 5px rgba(255,255,255,0.8);}
+        .staff-role { font-size: 0.9rem; color: #333; margin: 0; font-weight: 700; line-height: 1.4; text-transform: capitalize; }
 
-        /* --- EXCELLENCE & ONAM HIGHLIGHTS --- */
-        #excellence { text-align: center; background: linear-gradient(135deg, rgba(255,244,204,0.95), rgba(255,255,255,0.7)); border-color: var(--onam-gold); }
+        #excellence { text-align: center; }
         .excellence-btn {
-            background: var(--maroon); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 900; font-size: clamp(0.9rem, 2vw, 1.1rem);
-            display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3); margin-top: 10px;
+            background: rgba(139, 0, 0, 0.8); color: white; padding: 15px 35px; border-radius: 40px; text-decoration: none; font-weight: 900; font-size: clamp(1rem, 2vw, 1.2rem);
+            display: inline-block; transition: 0.3s; margin-top: 15px; border-top: 2px solid rgba(255,255,255,0.6); border-left: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3), inset 0 0 15px rgba(255,255,255,0.2); backdrop-filter: blur(10px);
         }
-        .excellence-btn:hover { background: var(--onam-green); transform: scale(1.05); }
+        .excellence-btn:hover { background: rgba(10, 74, 37, 0.9); transform: scale(1.05); box-shadow: 0 15px 30px rgba(10, 74, 37, 0.4), inset 0 0 20px rgba(255,255,255,0.4); }
 
-        #onam { border: 3px dashed var(--onam-green); background: rgba(255, 215, 0, 0.05); }
-        #onam p, #onam ul { color: #333; }
-        #onam strong { color: var(--onam-green); }
+        #onam p, #onam ul { color: #222; font-weight: 600;}
+        #onam strong { color: var(--onam-green); font-weight: 900;}
 
-        /* --- GALLERY --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-        .gallery-item { width: 100%; height: clamp(120px, 20vw, 200px); object-fit: cover; border-radius: 12px; border: 2px solid rgba(255,255,255,0.8); transition: 0.3s; }
-        .gallery-item:hover { transform: scale(1.05); border-color: var(--onam-green); box-shadow: 0 10px 20px rgba(0,0,0,0.15); z-index: 2; position: relative;}
+        .banner-reveal-text {
+            display: inline-block; background: rgba(255, 215, 0, 0.6); color: var(--maroon); padding: 12px 25px; border-radius: 30px;
+            font-weight: 900; font-size: 1.05rem; margin-top: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1), inset 0 0 15px rgba(255,255,255,0.6);
+            backdrop-filter: blur(10px); border-top: 2px solid white; border-left: 2px solid white; text-shadow: 0 1px 5px rgba(255,255,255,0.5);
+        }
 
-        /* --- FOOTER --- */
+        /* --- UPDATED GALLERY ASSETS (gallery1.jpg, gallery2.jpg, etc.) --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .gallery-item { 
+            width: 100%; height: clamp(150px, 20vw, 220px); object-fit: cover; border-radius: 20px; 
+            border-top: 3px solid rgba(255,255,255,0.9); border-left: 3px solid rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(0,0,0,0.1); border-right: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .gallery-item:hover { transform: scale(1.05) translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.5); z-index: 2; position: relative;}
+
         footer { 
-            background: var(--onam-green); color: rgba(255,255,255,0.9); text-align: center; padding: 2rem 1rem; 
-            border-top: 8px solid var(--onam-gold); position: relative; z-index: 1; border-radius: 20px 20px 0 0;
-            margin-top: 2rem;
+            background: rgba(10, 74, 37, 0.7); backdrop-filter: blur(30px) saturate(150%); -webkit-backdrop-filter: blur(30px) saturate(150%);
+            color: white; text-align: center; padding: 3rem 1rem; 
+            border-top: 2px solid rgba(255,255,255,0.5); border-left: 2px solid rgba(255,255,255,0.2); border-right: 2px solid rgba(255,255,255,0.2);
+            position: relative; z-index: 1; border-radius: 40px 40px 0 0; margin-top: 3rem;
+            box-shadow: 0 -15px 40px rgba(0,0,0,0.1);
         }
-        .admin-link { color: var(--onam-yellow); text-decoration: none; font-size: 0.85rem; margin-top: 15px; display: inline-block; font-weight: bold;}
-        .admin-link:hover { color: white; }
+        footer h2 { text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        footer p { font-weight: 600; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        .admin-link { color: var(--onam-yellow); text-decoration: none; font-size: 0.95rem; margin-top: 20px; display: inline-block; font-weight: 900; padding: 10px 20px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s;}
+        .admin-link:hover { color: white; background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
+
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 110px 20px 20px 20px; }
+            .mala-left, .mala-right { display: none; } 
+            .top-bar { right: 20px; }
+            .wing-header { font-size: 1.2rem; padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -291,7 +271,7 @@
 
     <div class="main-wrapper">
 
-        <header class="reveal">
+        <header class="ultra-glass reveal">
             <img src="assets/logo.png" alt="School Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/140?text=LOGO'">
             <h1>GVHSS Moolamattom</h1>
             <h2>Empowering Minds • Shaping the Future</h2>
@@ -304,57 +284,58 @@
             </video>
         </div>
 
-        <section class="reveal">
+        <section class="ultra-glass reveal">
             <div class="stats-container">
-                <div class="stat-box">
+                <div class="ultra-glass stat-box">
                     <p class="stat-number">65+</p>
                     <p class="stat-label">Years of Excellence</p>
                 </div>
-                <div class="stat-box">
+                <div class="ultra-glass stat-box">
                     <p class="stat-number">100%</p>
                     <p class="stat-label">Pass Rate</p>
                 </div>
-                <div class="stat-box">
+                <div class="ultra-glass stat-box">
                     <p class="stat-number">3</p>
                     <p class="stat-label">Vocational Streams</p>
                 </div>
             </div>
         </section>
 
-        <section id="leadership" class="reveal" style="text-align: center;">
+        <!-- LEADERSHIP SECTION -->
+        <section id="leadership" class="ultra-glass reveal" style="text-align: center;">
             <h2 class="section-title">Words from Our Leaders</h2>
             <div class="split-container">
-                <div class="split-column" style="text-align: center;">
-                    <img src="assets/principal.jpg" alt="Principal Nisa K" class="leader-img" onerror="this.src='https://via.placeholder.com/150?text=Principal'">
-                    <h3>Smt. Nisa K</h3>
-                    <p style="color:var(--maroon); font-weight:800; margin: 0; text-transform: uppercase; font-size: 0.9rem;">Principal</p>
+                <div class="ultra-glass split-column" style="text-align: center;">
+                    <img src="assets/suresh.jpg" alt="Temporary Principal Suresh Kumar" class="leader-img" onerror="this.src='https://via.placeholder.com/150?text=Principal'">
+                    <h3>Sri. Suresh Kumar C G</h3>
+                    <p style="color:var(--maroon); font-weight:900; margin: 0; text-transform: uppercase; font-size: 0.9rem; text-shadow: 0 1px 3px rgba(255,255,255,0.8);">Temporary Principal</p>
                     <p class="leader-text">"Welcome to the digital hub of GVHSS Moolamattom. Education is about character building, innovation, and preparing our children for tomorrow. Wishing everyone a Happy and Prosperous Onam!"</p>
                 </div>
                 
-                <div class="split-column" style="text-align: center;">
+                <div class="ultra-glass split-column" style="text-align: center;">
                     <img src="assets/hm.jpg" alt="Headmistress Sreekala" class="leader-img" onerror="this.src='https://via.placeholder.com/150?text=HM'">
                     <h3>Smt. Sreekala P</h3>
-                    <p style="color:var(--maroon); font-weight:800; margin: 0; text-transform: uppercase; font-size: 0.9rem;">Headmistress</p>
+                    <p style="color:var(--maroon); font-weight:900; margin: 0; text-transform: uppercase; font-size: 0.9rem; text-shadow: 0 1px 3px rgba(255,255,255,0.8);">Headmistress</p>
                     <p class="leader-text">"A strong foundation in the early years builds extraordinary futures. Our dedicated staff ensures every child is nurtured with care and discipline. Welcome to our vibrant digital campus!"</p>
                 </div>
             </div>
         </section>
 
-        <section id="academics" class="reveal">
+        <section id="academics" class="ultra-glass reveal">
             <h2 class="section-title">Academic Programs</h2>
             <div class="split-container">
-                <div class="split-column">
+                <div class="ultra-glass split-column">
                     <h3>High School Section</h3>
-                    <p>State Syllabus foundation for classes 8th to 10th.</p>
+                    <p style="font-weight: 600;">State Syllabus foundation for classes 8th to 10th.</p>
                     <div class="button-container">
                         <a href="activity.html?item=class8" class="activity-btn">8th Standard</a>
                         <a href="activity.html?item=class9" class="activity-btn">9th Standard</a>
                         <a href="activity.html?item=class10" class="activity-btn">10th Standard</a>
                     </div>
                 </div>
-                <div class="split-column">
+                <div class="ultra-glass split-column">
                     <h3>Vocational Higher Secondary</h3>
-                    <p>Career-ready vocational training streams.</p>
+                    <p style="font-weight: 600;">Career-ready vocational training streams.</p>
                     <div class="button-container">
                         <a href="activity.html?item=webdev" class="activity-btn">Web Developer</a>
                         <a href="activity.html?item=dietetic" class="activity-btn">Dietetic Aid</a>
@@ -364,16 +345,16 @@
             </div>
         </section>
 
-        <section id="excellence" class="reveal">
+        <section id="excellence" class="ultra-glass reveal">
             <h2 class="section-title" style="border: none;">Our Excellence 🏆</h2>
-            <p style="font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 500; max-width: 800px; margin: 0 auto 20px auto;">GVHSS Moolamattom has a proud legacy of outstanding academic results, champion athletes, and award-winning innovators.</p>
+            <p style="font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 700; max-width: 800px; margin: 0 auto 20px auto; text-shadow: 0 2px 10px rgba(255,255,255,0.8);">GVHSS Moolamattom has a proud legacy of outstanding academic results, champion athletes, and award-winning innovators.</p>
             <a href="excellence.html" class="excellence-btn">Explore Our Achievements</a>
         </section>
 
-        <section id="activities" class="reveal">
+        <section id="activities" class="ultra-glass reveal">
             <h2 class="section-title">Co-Curricular Clubs</h2>
             <div class="split-container">
-                <div class="split-column">
+                <div class="ultra-glass split-column">
                     <h3>High School Clubs</h3>
                     <div class="button-container">
                         <a href="activity.html?item=jrc" class="activity-btn">JRC</a>
@@ -382,7 +363,7 @@
                         <a href="activity.html?item=yip-hs" class="activity-btn">YIP</a>
                     </div>
                 </div>
-                <div class="split-column">
+                <div class="ultra-glass split-column">
                     <h3>VHSE Initiatives</h3>
                     <div class="button-container">
                         <a href="activity.html?item=nss" class="activity-btn">NSS</a>
@@ -394,34 +375,37 @@
             </div>
         </section>
 
-        <section id="onam" class="reveal">
+        <section id="onam" class="ultra-glass reveal">
             <h2 class="section-title">🌸 Onam Festivities 2026</h2>
-            <p style="font-size: 1.1rem; font-weight: 600;">Our campus is buzzing with the spirit of Mahabali! Don't miss our major events this week:</p>
+            <p style="font-size: 1.1rem; font-weight: 800; text-shadow: 0 1px 5px rgba(255,255,255,0.8);">Our campus is buzzing with the spirit of Mahabali! Don't miss our major events this week:</p>
             <ul style="font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.8;">
-                <li><strong>Maha Pookkalam:</strong> Inter-class floral carpet competition at the main courtyard.</li>
-                <li><strong>Vadamvali:</strong> The ultimate Tug of War test for VHSE vs High School!</li>
-                <li><strong>Onasadya:</strong> A grand traditional feast for all students and staff.</li>
-                <li><strong>Thiruvathira:</strong> Traditional dance performance by the Arts Club.</li>
+                <li><strong>ഓണപ്പൂക്കള മത്സരം (Pookkalam Competition):</strong> Inter-class floral carpet competition at the main courtyard.</li>
+                <li><strong>Vadamvali (Tug of War):</strong> The ultimate test of strength for VHSE vs High School!</li>
+                <li><strong>Mini Games:</strong> Fun traditional Kerala mini-games for all students and staff.</li>
             </ul>
+            <div class="banner-reveal-text">✨ Digital Banner Revealed ✨</div>
         </section>
 
-        <section id="gallery" class="reveal">
+        <!-- UPDATED FILENAMES HERE -->
+        <section id="gallery" class="ultra-glass reveal">
             <h2 class="section-title">Campus Gallery</h2>
             <div class="gallery-grid">
-                <img class="gallery-item" src="assets/gallery-1.jpg" alt="Campus Life" onerror="this.src='https://via.placeholder.com/300x200?text=Image+1'">
-                <img class="gallery-item" src="assets/gallery-2.jpg" alt="Lab Activity" onerror="this.src='https://via.placeholder.com/300x200?text=Image+2'">
-                <img class="gallery-item" src="assets/gallery-3.jpg" alt="NSS Camp" onerror="this.src='https://via.placeholder.com/300x200?text=Image+3'">
-                <img class="gallery-item" src="assets/gallery-4.jpg" alt="Sports Meet" onerror="this.src='https://via.placeholder.com/300x200?text=Image+4'">
+                <img class="gallery-item" src="assets/gallery1.jpg" alt="Campus Life" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+1'">
+                <img class="gallery-item" src="assets/gallery2.jpg" alt="Lab Activity" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+2'">
+                <img class="gallery-item" src="assets/gallery3.jpg" alt="NSS Camp" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+3'">
+                <img class="gallery-item" src="assets/gallery4.jpg" alt="Sports Meet" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+4'">
             </div>
         </section>
 
-        <section id="staff-directory" class="reveal">
+        <!-- STAFF DIRECTORY -->
+        <section id="staff-directory" class="ultra-glass reveal">
             <h2 class="section-title">Our Faculties & Staff</h2>
-            <p style="font-size: 1.1rem; color: #444; font-weight: 500;">Meet the dedicated team that empowers our students and keeps our school running smoothly every day.</p>
+            <p style="font-size: 1.1rem; color: #222; font-weight: 700; text-shadow: 0 1px 5px rgba(255,255,255,0.8);">Meet the dedicated team that empowers our students and keeps our school running smoothly every day.</p>
 
+            <!-- 1. HIGH SCHOOL WING -->
             <div class="wing-header">High School Section</div>
             
-            <div class="team-leader-card">
+            <div class="ultra-glass team-leader-card">
                 <p class="leader-name">Smt. Sreekala P</p>
                 <p class="leader-designation">Headmistress</p>
                 <p class="led-by-text">Team led by Smt. Sreekala P</p>
@@ -429,54 +413,55 @@
             
             <h3 class="sub-category">Teaching Staff</h3>
             <div class="staff-grid">
-                <div class="staff-card"><p class="staff-name">Manju V S</p><p class="staff-role">HST English</p></div>
-                <div class="staff-card"><p class="staff-name">Jayakrishnan T R</p><p class="staff-role">HST Physical Science</p></div>
-                <div class="staff-card"><p class="staff-name">Minimol Sashi</p><p class="staff-role">HST Malayalam</p></div>
-                <div class="staff-card"><p class="staff-name">Jancy Samuel</p><p class="staff-role">HST Social Science</p></div>
-                <div class="staff-card"><p class="staff-name">Asha M</p><p class="staff-role">HST Malayalam</p></div>
-                <div class="staff-card"><p class="staff-name">Sumina P A</p><p class="staff-role">HST Hindi</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Manju V S</p><p class="staff-role">HST English</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Jayakrishnan T R</p><p class="staff-role">HST Physical Science</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Minimol Sashi</p><p class="staff-role">HST Malayalam</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Jancy Samuel</p><p class="staff-role">HST Social Science</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Asha M</p><p class="staff-role">HST Malayalam</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Sumina P A</p><p class="staff-role">HST Hindi</p></div>
             </div>
 
             <h3 class="sub-category">Non-Teaching Staff</h3>
             <div class="staff-grid">
-                <div class="staff-card"><p class="staff-name">Alfred Netto</p><p class="staff-role">Clerk</p></div>
-                <div class="staff-card"><p class="staff-name">Ajeesh Gopal V</p><p class="staff-role">Office Assistant</p></div>
-                <div class="staff-card"><p class="staff-name">Razia E H</p><p class="staff-role">Office Assistant</p></div>
-                <div class="staff-card"><p class="staff-name">Shaisi Jose</p><p class="staff-role">FTM</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Alfred Netto</p><p class="staff-role">Clerk</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Ajeesh Gopal V</p><p class="staff-role">Office Assistant</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Razia E H</p><p class="staff-role">Office Assistant</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Shaisi Jose</p><p class="staff-role">FTM</p></div>
             </div>
 
+            <!-- 2. VHSE WING -->
             <div class="wing-header">Vocational Higher Secondary Section</div>
             
-            <div class="team-leader-card">
-                <p class="leader-name">Smt. Nisa K</p>
-                <p class="leader-designation">Principal / Voc. Teacher in CS</p>
-                <p class="led-by-text">Team led by Smt. Nisa K</p>
+            <div class="ultra-glass team-leader-card">
+                <p class="leader-name">Sri. Suresh Kumar C G</p>
+                <p class="leader-designation">Temporary Principal / NVT Chemistry (Sr)</p>
+                <p class="led-by-text">Team led by Sri. Suresh Kumar C G</p>
             </div>
             
             <h3 class="sub-category">Teaching Staff</h3>
             <div class="staff-grid">
-                <div class="staff-card"><p class="staff-name">Suresh Kumar C G</p><p class="staff-role">NVT Chemistry (Sr)</p></div>
-                <div class="staff-card"><p class="staff-name">Manju Kurian</p><p class="staff-role">NVT Physics (Sr)</p></div>
-                <div class="staff-card"><p class="staff-name">Anu P Thomas</p><p class="staff-role">VT In MLT</p></div>
-                <div class="staff-card"><p class="staff-name">Victoria S</p><p class="staff-role">VT in MLT</p></div>
-                <div class="staff-card"><p class="staff-name">Aneesha Sam Merin</p><p class="staff-role">NVT English (Sr)</p></div>
-                <div class="staff-card"><p class="staff-name">Rajesh V</p><p class="staff-role">NVT Biology (Jr)</p></div>
-                <div class="staff-card"><p class="staff-name">Anju S</p><p class="staff-role">NVT Mathematics (Jr)</p></div>
-                <div class="staff-card"><p class="staff-name">Mini Sebastian</p><p class="staff-role">NVT ED (Jr)</p></div>
-                <div class="staff-card"><p class="staff-name">Ambily T G</p><p class="staff-role">Vocational Instructor in MLT</p></div>
-                <div class="staff-card"><p class="staff-name">Munavirsha M K</p><p class="staff-role">Vocational Instructor in MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Manju Kurian</p><p class="staff-role">NVT Physics (Sr)</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Anu P Thomas</p><p class="staff-role">VT In MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Victoria S</p><p class="staff-role">VT in MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Aneesha Sam Merin</p><p class="staff-role">NVT English (Sr)</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Rajesh V</p><p class="staff-role">NVT Biology (Jr)</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Anju S</p><p class="staff-role">NVT Mathematics (Jr)</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Mini Sebastian</p><p class="staff-role">NVT ED (Jr)</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Ambily T G</p><p class="staff-role">Vocational Instructor in MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Munavirsha M K</p><p class="staff-role">Vocational Instructor in MLT</p></div>
             </div>
 
             <h3 class="sub-category">Non-Teaching Staff</h3>
             <div class="staff-grid">
-                <div class="staff-card"><p class="staff-name">Rethyush R</p><p class="staff-role">LTA in Computer Science</p></div>
-                <div class="staff-card"><p class="staff-name">Sijo K Varghese</p><p class="staff-role">LTA in MLT</p></div>
-                <div class="staff-card"><p class="staff-name">Verginia S</p><p class="staff-role">LTA in MLT</p></div>
-                <div class="staff-card"><p class="staff-name">Binoy P</p><p class="staff-role">LDC</p></div>
-                <div class="staff-card"><p class="staff-name">Anumol A V</p><p class="staff-role">OA</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Rethyush R</p><p class="staff-role">LTA in Computer Science</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Sijo K Varghese</p><p class="staff-role">LTA in MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Verginia S</p><p class="staff-role">LTA in MLT</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Binoy P</p><p class="staff-role">LDC</p></div>
+                <div class="ultra-glass staff-card"><p class="staff-name">Anumol A V</p><p class="staff-role">OA</p></div>
             </div>
         </section>
 
+        <!-- FOOTER -->
         <footer class="reveal">
             <h2 style="color: var(--onam-yellow); margin-top: 0;">Contact Us</h2>
             <p style="font-size: clamp(0.9rem, 2vw, 1rem);">📍 GVHSS Moolamattom, Idukki District, Kerala, PIN - 685589</p>
@@ -484,7 +469,7 @@
             
             <p style="margin-top: 30px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
                 &copy; 2026 GVHSS Moolamattom.<br>
-                Built by <strong style="color: var(--onam-gold);">Alan Martin</strong> | Powered by <strong style="color: var(--onam-gold);">Gemini</strong>
+                Built by <strong style="color: var(--onam-gold);">Alan Martin</strong>
             </p>
             
             <a href="login.html" class="admin-link">System Administrator Login</a>
@@ -492,6 +477,7 @@
 
     </div>
 
+    <!-- JAVASCRIPT -->
     <script>
         function toggleMenu() {
             const nav = document.getElementById("navLinks");
@@ -501,13 +487,10 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            
-            // Scroll Reveal
             const reveals = document.querySelectorAll(".reveal");
             function revealOnScroll() {
                 let windowHeight = window.innerHeight;
                 let elementVisible = 80;
-                
                 reveals.forEach(reveal => {
                     let elementTop = reveal.getBoundingClientRect().top;
                     if (elementTop < windowHeight - elementVisible) {
@@ -518,15 +501,12 @@
             window.addEventListener("scroll", revealOnScroll);
             revealOnScroll(); 
 
-            // Glowing Golden Particles
             const particleContainer = document.getElementById('particle-container');
-            const particleCount = 30; 
-
+            const particleCount = 25; 
             for (let i = 0; i < particleCount; i++) {
                 let particle = document.createElement('div');
                 particle.classList.add('glow-mote');
-                
-                let size = Math.random() * 6 + 2; 
+                let size = Math.random() * 8 + 4; 
                 let posX = Math.random() * 100; 
                 let duration = Math.random() * 15 + 10; 
                 let delay = Math.random() * 10; 
@@ -536,7 +516,6 @@
                 particle.style.left = posX + 'vw';
                 particle.style.animationDuration = duration + 's';
                 particle.style.animationDelay = delay + 's';
-
                 particleContainer.appendChild(particle);
             }
         });
