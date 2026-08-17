@@ -216,7 +216,7 @@
             backdrop-filter: blur(10px); border-top: 2px solid white; border-left: 2px solid white; text-shadow: 0 1px 5px rgba(255,255,255,0.5);
         }
 
-        /* --- UPDATED GALLERY ASSETS (gallery1.jpg, gallery2.jpg, etc.) --- */
+        /* --- UPDATED GALLERY ASSETS --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
         .gallery-item { 
             width: 100%; height: clamp(150px, 20vw, 220px); object-fit: cover; border-radius: 20px; 
@@ -386,8 +386,8 @@
             <div class="banner-reveal-text">✨ Digital Banner Revealed ✨</div>
         </section>
 
-        <!-- UPDATED FILENAMES HERE -->
-        <section id="gallery" class="ultra-glass reveal">
+        <!-- UPDATED GALLERY SECTION WITH SHOW MORE BUTTON -->
+        <section id="gallery" class="ultra-glass reveal" style="text-align: center;">
             <h2 class="section-title">Campus Gallery</h2>
             <div class="gallery-grid">
                 <img class="gallery-item" src="assets/gallery1.jpg" alt="Campus Life" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+1'">
@@ -395,6 +395,8 @@
                 <img class="gallery-item" src="assets/gallery3.jpg" alt="NSS Camp" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+3'">
                 <img class="gallery-item" src="assets/gallery4.jpg" alt="Sports Meet" onerror="this.src='https://via.placeholder.com/300x200?text=Gallery+4'">
             </div>
+            
+            <a href="gallery.html" class="excellence-btn" style="margin-top: 30px;">Show More 📸</a>
         </section>
 
         <!-- STAFF DIRECTORY -->
