@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of GVHSS Moolamattom. Empowering minds and shaping the future with excellence in academics and vocational training.">
+    
     <title>GVHSS Moolamattom | Official Portal</title>
+    
+    <!-- FAVICON (The Logo on the Browser Tab) -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <!-- GOOGLE SEARCH META TAGS -->
+    <meta property="og:site_name" content="GVHSS Moolamattom">
+    <meta property="og:title" content="GVHSS Moolamattom | Official Portal">
+    <meta property="og:description" content="Official website of GVHSS Moolamattom. Empowering minds and shaping the future with excellence in academics and vocational training.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta name="application-name" content="GVHSS Moolamattom">
     
     <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,22 +143,44 @@
         }
         .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 
-        /* --- LEADERSHIP (Floating Badges) --- */
-        .leader-grid { display: grid; grid-template-columns: 1fr; gap: 60px 30px; margin-top: 60px; }
-        @media (min-width: 768px) { .leader-grid { grid-template-columns: 1fr 1fr; } }
+        /* --- PERFECTED LEADERSHIP CARDS (Floating Side Images) --- */
+        .leader-grid { 
+            display: grid; grid-template-columns: 1fr; gap: 50px 30px; margin-top: 40px; 
+        }
+        @media (min-width: 992px) { 
+            .leader-grid { grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px;} 
+        }
         
         .leader-card {
-            text-align: center; position: relative; padding-top: 60px; /* Make room for floating image */
-            border-top: 4px solid var(--primary);
+            background: var(--card-bg); border-radius: var(--border-radius);
+            padding: 30px 20px; position: relative;
+            box-shadow: var(--shadow-soft); transition: 0.3s;
+            border-left: 5px solid var(--primary);
+            text-align: left;
         }
+        .leader-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-left-color: var(--accent); }
+
         .leader-img {
             width: 100px; height: 100px; object-fit: cover; border-radius: 50%;
-            position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
-            border: 4px solid var(--card-bg); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: white;
+            position: absolute; top: -30px; right: 20px; /* Mobile: Floats on Top Right Edge */
+            border: 5px solid var(--card-bg); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: white; z-index: 2;
         }
-        .leader-card h3 { color: var(--primary); font-size: 1.4rem; margin: 0 0 5px 0; font-weight: 800; }
+        
+        /* Proper padding to avoid text overlapping the image */
+        .leader-card h3 { color: var(--primary); font-size: 1.4rem; margin: 0 0 5px 0; font-weight: 800; padding-right: 90px;}
         .leader-badge { display: inline-block; background: var(--bg-body); color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; padding: 6px 15px; border-radius: 20px; margin-bottom: 15px; letter-spacing: 1px;}
         .leader-text { margin: 0; font-weight: 500; font-style: italic; color: var(--text-muted);}
+
+        /* On Desktop/Laptops: Image shifts to the exact Right Edge */
+        @media (min-width: 992px) {
+            .leader-card { padding: 40px; padding-right: 120px; } /* Deep padding for image room */
+            .leader-img {
+                width: 130px; height: 130px;
+                top: 50%; right: -40px; transform: translateY(-50%); /* Floats on side edge */
+            }
+            .leader-card h3 { padding-right: 0; } /* Reset text wrap */
+        }
 
         /* --- ACADEMICS & INNOVATIONS (Standard Grid) --- */
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
@@ -266,17 +300,17 @@
     <!-- MAIN CONTENT CONTAINER -->
     <div class="container">
         
-        <!-- LEADERSHIP -->
+        <!-- RESPONSIVE SIDE-FLOATING LEADERSHIP CARDS -->
         <section id="leadership" class="reveal">
             <h2 class="section-title">Leadership</h2>
             <div class="leader-grid">
-                <div class="card leader-card">
+                <div class="leader-card">
                     <img src="assets/suresh.jpg" alt="Principal" loading="lazy" class="leader-img" onerror="this.src='https://via.placeholder.com/100?text=Principal'">
                     <h3>Sri. Suresh Kumar C G</h3>
                     <span class="leader-badge">Principal</span>
                     <p class="leader-text">"Education is the foundation of character building, innovation, and preparing our children for the challenges of tomorrow."</p>
                 </div>
-                <div class="card leader-card">
+                <div class="leader-card">
                     <img src="assets/hm.jpg" alt="Headmistress" loading="lazy" class="leader-img" onerror="this.src='https://via.placeholder.com/100?text=HM'">
                     <h3>Smt. Sreekala P</h3>
                     <span class="leader-badge">Headmistress</span>
@@ -358,7 +392,7 @@
             </div>
         </section>
 
-        <!-- STAFF DIRECTORY -->
+        <!-- STAFF DIRECTORY (Modern ID Badges) -->
         <section id="staff-directory" class="reveal">
             <h2 class="section-title">Faculty & Staff</h2>
 
