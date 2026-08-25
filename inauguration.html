@@ -3,129 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASS LAUNCH | GVHSS Moolamattom</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Grand Launch | GVHSS Moolamattom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- MASS CINEMATIC PALETTE --- */
+        /* --- ROYAL ELEGANCE PALETTE --- */
         :root {
-            --bg-pure: #030303;
-            --bg-glow: #1a0000;
-            --neon-red: #ff003c;
-            --gold: #ffb300;
-            --text-main: #ffffff;
+            --bg-deep: #050b14;
+            --bg-royal: #0a192f;
+            --gold-primary: #d4af37;
+            --gold-light: #fbeea1;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(212, 175, 55, 0.3);
+            --text-light: #e2e8f0;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
-            background-color: var(--bg-pure);
-            background-image: radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-pure) 100%);
-            color: var(--text-main); height: 100vh; display: flex; align-items: center; justify-content: center;
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(circle at center, var(--bg-royal) 0%, var(--bg-deep) 100%);
+            color: white; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden;
         }
 
-        /* --- CINEMATIC EMBERS --- */
+        /* --- ETHEREAL GOLD PARTICLES --- */
         #particle-container, #fireworks-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .ember {
+        .gold-dust {
             position: absolute; bottom: -20px; border-radius: 50%;
-            background: var(--neon-red); box-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--gold);
-            will-change: transform, opacity; animation: floatUp cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+            background: var(--gold-light); box-shadow: 0 0 15px var(--gold-primary), 0 0 30px white;
+            will-change: transform, opacity; animation: riseSlow linear infinite;
         }
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-120vh) translateX(50px) scale(0); opacity: 0; }
-        }
-
-        /* --- MASS SCREEN SHAKE --- */
-        .mass-shake { animation: intenseShake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite; }
-        @keyframes intenseShake {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-10px, 10px) rotate(-1deg); }
-            50% { transform: translate(10px, -10px) rotate(1deg); }
-            75% { transform: translate(-10px, -10px) rotate(-1deg); }
+        @keyframes riseSlow {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-120vh) translateX(20px) scale(1.5); opacity: 0; }
         }
 
-        /* --- PRE-LAUNCH VIBE --- */
-        #pre-launch { position: relative; z-index: 10; padding: 2rem; max-width: 900px; width: 95%; }
+        /* --- ELEGANT GLASS CARD --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-top: 3px solid var(--gold-primary);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            padding: 4rem 3rem;
+            max-width: 800px; width: 90%;
+            position: relative; z-index: 10;
+        }
+
+        /* --- PRE-LAUNCH --- */
+        #pre-launch { display: flex; flex-direction: column; align-items: center; }
         
-        .alert-badge {
-            display: inline-block; color: var(--neon-red); border: 2px solid var(--neon-red);
-            padding: 8px 30px; border-radius: 4px; font-weight: 900; font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3), inset 0 0 10px rgba(255, 0, 60, 0.2);
-            animation: pulseGlow 2s infinite;
-        }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(255,0,60,0.3); } 50% { box-shadow: 0 0 30px rgba(255,0,60,0.8); } }
-
-        .mass-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1; margin: 0 0 10px 0; letter-spacing: -2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8);}
-        .mass-subtitle { font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 700; color: var(--gold); letter-spacing: 10px; text-transform: uppercase; margin-bottom: 60px; }
-
-        /* HEARTBEAT LAUNCH BUTTON */
-        .mass-btn {
-            background: var(--neon-red); color: white; border: none; padding: 20px 60px;
-            font-size: 2rem; font-weight: 900; font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase; letter-spacing: 4px; cursor: pointer;
-            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.5); border-radius: 4px;
-            transition: 0.2s; position: relative; overflow: hidden;
-            animation: heartbeat 1.5s infinite;
-        }
-        .mass-btn:hover { animation: none; transform: scale(1.1); box-shadow: 0 20px 60px rgba(255, 0, 60, 0.8); background: white; color: var(--neon-red);}
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255,0,60,0.8); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255,0,60,0.8); }
-            60% { transform: scale(1); }
+        .royal-badge {
+            display: inline-block; color: var(--gold-light); border: 1px solid var(--gold-primary);
+            padding: 8px 25px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px;
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        /* --- COUNTDOWN (AGGRESSIVE) --- */
+        .grand-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; color: white; margin: 0 0 15px 0; line-height: 1.2; text-shadow: 0 10px 20px rgba(0,0,0,0.5);}
+        .grand-subtitle { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 500; color: var(--text-light); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 50px; }
+
+        /* LUXURY BUTTON */
+        .launch-btn {
+            background: transparent; color: var(--gold-primary); border: 2px solid var(--gold-primary);
+            padding: 18px 50px; font-size: 1.2rem; font-weight: 800; font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase; letter-spacing: 3px; cursor: pointer; border-radius: 50px;
+            transition: 0.4s ease; position: relative; overflow: hidden;
+        }
+        .launch-btn:hover { background: var(--gold-primary); color: var(--bg-deep); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); transform: translateY(-3px);}
+
+        /* --- SUSPENSEFUL COUNTDOWN --- */
         #countdown-screen { display: none; z-index: 10; position: relative; }
-        .danger-ring {
+        .elegant-ring {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: clamp(250px, 50vw, 400px); height: clamp(250px, 50vw, 400px);
-            border: 8px solid transparent; border-top-color: var(--neon-red); border-bottom-color: var(--gold);
-            border-radius: 50%; animation: spinFast 1s linear infinite; pointer-events: none;
+            width: clamp(250px, 40vw, 350px); height: clamp(250px, 40vw, 350px);
+            border: 2px solid rgba(212, 175, 55, 0.2); border-top-color: var(--gold-primary);
+            border-radius: 50%; animation: spinSmooth 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; pointer-events: none;
         }
-        @keyframes spinFast { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes spinSmooth { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
         
-        .countdown-number { font-size: clamp(12rem, 35vw, 30rem); font-weight: 900; color: white; text-shadow: 0 0 50px var(--neon-red); margin: 0; line-height: 1; z-index: 2; position: relative;}
-        .slam-anim { animation: slam 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes slam { 0% { transform: scale(5); opacity: 0; } 50% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.8); opacity: 0; } }
+        .countdown-number { font-family: 'Playfair Display', serif; font-size: clamp(8rem, 25vw, 18rem); font-weight: 900; color: white; text-shadow: 0 0 40px rgba(212, 175, 55, 0.5); margin: 0; line-height: 1; z-index: 2; position: relative;}
+        
+        /* Slow, graceful fade for increased latency */
+        .fade-scale { animation: slowFadeScale 1.4s ease-out forwards; }
+        @keyframes slowFadeScale { 
+            0% { transform: scale(0.8); opacity: 0; filter: blur(10px); } 
+            30% { transform: scale(1.05); opacity: 1; filter: blur(0); } 
+            80% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0; filter: blur(5px); } 
+        }
 
         #flash { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: white; z-index: 9999; opacity: 0; pointer-events: none; }
 
         /* --- POST LAUNCH REVEAL --- */
-        #post-launch { display: none; z-index: 10; width: 100%; max-width: 1000px; padding: 20px; }
+        #post-launch { display: none; }
         
-        .reveal-box {
-            background: rgba(10, 0, 0, 0.8); border: 2px solid var(--neon-red); border-top: 10px solid var(--neon-red);
-            padding: 50px 30px; box-shadow: 0 20px 50px rgba(255, 0, 60, 0.2);
-            position: relative; overflow: hidden;
-        }
-        
-        /* Reveal Staggering */
-        .rl-1, .rl-2, .rl-3, .rl-4 { opacity: 0; transform: translateY(40px); }
-        .show-reveal .rl-1 { animation: slideUp 0.6s ease forwards 0.2s; }
-        .show-reveal .rl-2 { animation: slideUp 0.6s ease forwards 0.6s; }
-        .show-reveal .rl-3 { animation: slideUp 0.6s ease forwards 1s; }
-        .show-reveal .rl-4 { animation: slideUp 0.6s ease forwards 1.4s; }
-        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        .reveal-anim { opacity: 0; transform: translateY(30px); }
+        .show-reveal .r-1 { animation: elegantRise 0.8s ease forwards 0.3s; }
+        .show-reveal .r-2 { animation: elegantRise 0.8s ease forwards 0.8s; }
+        .show-reveal .r-3 { animation: elegantRise 0.8s ease forwards 1.3s; }
+        .show-reveal .r-4 { animation: elegantRise 0.8s ease forwards 1.8s; }
+        @keyframes elegantRise { to { opacity: 1; transform: translateY(0); } }
 
-        .final-title { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; color: white; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: -1px; text-shadow: 0 0 20px rgba(255,255,255,0.3);}
-        .final-subtitle { font-size: 1.5rem; color: var(--gold); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px;}
-        
-        .launched-by { color: #888; font-size: 1rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px;}
-        .leader-names { font-size: 1.5rem; color: white; font-weight: 900; text-transform: uppercase; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 30px;}
+        .launched-by-text { color: var(--gold-primary); font-size: 0.9rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;}
+        .leader-names { font-size: 1.3rem; color: white; font-weight: 800; line-height: 1.8; margin-bottom: 30px;}
+        .leader-names span { color: var(--text-light); font-size: 0.9rem; font-weight: 500;}
 
         .enter-btn {
-            display: inline-block; background: transparent; color: var(--neon-red); border: 3px solid var(--neon-red);
-            padding: 15px 40px; font-size: 1.2rem; font-weight: 900; text-decoration: none; text-transform: uppercase;
-            letter-spacing: 3px; transition: 0.3s;
+            display: inline-block; background: var(--gold-primary); color: var(--bg-deep);
+            padding: 15px 40px; font-size: 1.1rem; font-weight: 800; text-decoration: none; text-transform: uppercase;
+            letter-spacing: 2px; border-radius: 50px; transition: 0.3s; margin-top: 20px;
         }
-        .enter-btn:hover { background: var(--neon-red); color: white; box-shadow: 0 0 30px rgba(255,0,60,0.6); transform: scale(1.05);}
+        .enter-btn:hover { background: white; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); transform: translateY(-2px);}
 
-        /* Firework Sparkles */
-        .fw-spark { position: absolute; width: 6px; height: 20px; border-radius: 4px; animation: fwExplode 1s ease-out forwards; will-change: transform, opacity; }
+        /* Elegant Fireworks */
+        .fw-spark { position: absolute; width: 4px; height: 15px; border-radius: 50%; animation: fwExplode 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; will-change: transform, opacity; }
         @keyframes fwExplode { 0% { transform: translate(0,0) scale(1); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; } }
 
     </style>
@@ -140,64 +134,59 @@
     <div id="flash"></div>
 
     <!-- STAGE 1: PRE-LAUNCH -->
-    <div id="pre-launch">
-        <div class="alert-badge">System Ready</div>
-        <h1 class="mass-title">GVHSS Moolamattom</h1>
-        <div class="mass-subtitle">Digital Hub</div>
-        <button class="mass-btn" onclick="startLaunch()">Launch</button>
+    <div id="pre-launch" class="glass-panel">
+        <div class="royal-badge">Official Inauguration</div>
+        <h1 class="grand-title">GVHSS Moolamattom</h1>
+        <div class="grand-subtitle">Digital Hub & Portal</div>
+        <button class="launch-btn" onclick="startLaunch()">Initiate Launch</button>
     </div>
 
     <!-- STAGE 2: COUNTDOWN -->
     <div id="countdown-screen">
-        <div class="danger-ring"></div>
+        <div class="elegant-ring"></div>
         <p class="countdown-number" id="timer-text">10</p>
     </div>
 
     <!-- STAGE 3: POST LAUNCH REVEAL -->
-    <div id="post-launch">
-        <div class="reveal-box" id="revealBox">
-            <div class="rl-1">
-                <h2 class="final-title">GVHSS Moolamattom</h2>
-                <div class="final-subtitle">Digital Hub Officially Active</div>
+    <div id="post-launch" class="glass-panel" style="padding: 3rem 2rem;">
+        <div class="r-1 reveal-anim">
+            <div class="royal-badge">Successfully Launched</div>
+            <h2 class="grand-title" style="font-size: clamp(1.8rem, 4vw, 3rem);">Welcome to the Future</h2>
+            <p style="color: var(--text-light); margin-bottom: 40px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">A milestone designed to connect, inspire, and elevate our academic journey.</p>
+        </div>
+        
+        <div class="r-2 reveal-anim">
+            <div class="launched-by-text">Officially Inaugurated By</div>
+            <div class="leader-names">
+                Sri. Suresh Kumar C G <span>(Principal)</span><br>
+                <span style="color: var(--gold-primary); font-size: 1.2rem;">&amp;</span><br>
+                Smt. Sreekala P <span>(Headmistress)</span>
             </div>
-            
-            <div class="rl-2">
-                <div class="launched-by">Inaugurated By</div>
-                <div class="leader-names">
-                    Sri. Suresh Kumar C G <span style="color:var(--neon-red); font-size:1rem;">(Principal)</span><br>
-                    <span style="font-size: 1rem; color: #555;">&amp;</span><br>
-                    Smt. Sreekala P <span style="color:var(--neon-red); font-size:1rem;">(Headmistress)</span>
-                </div>
-            </div>
-            
-            <div class="rl-3">
-                <p style="color: #aaa; margin-bottom: 40px; font-weight: 600;">Special Thanks to our Former Principal, Smt. Nisa K.</p>
-            </div>
-            
-            <div class="rl-4">
-                <a href="index.html" class="enter-btn">Enter Hub</a>
-            </div>
+        </div>
+        
+        <div class="r-3 reveal-anim">
+            <div style="width: 50px; height: 2px; background: rgba(255,255,255,0.2); margin: 20px auto;"></div>
+            <p style="color: #cbd5e1; font-size: 0.9rem; font-style: italic;">Special Thanks to our Former Principal, Smt. Nisa K.</p>
+        </div>
+        
+        <div class="r-4 reveal-anim">
+            <a href="index.html" class="enter-btn">Enter Portal</a>
         </div>
     </div>
 
     <script>
-        // Cinematic Embers
+        // Elegant Golden Dust Particles
         const particleContainer = document.getElementById('particle-container');
-        for (let i = 0; i < 40; i++) {
-            let ember = document.createElement('div');
-            ember.classList.add('ember');
-            let size = Math.random() * 6 + 2; 
-            ember.style.width = size + 'px';
-            ember.style.height = size + 'px';
-            ember.style.left = (Math.random() * 100) + 'vw';
-            ember.style.animationDuration = (Math.random() * 5 + 3) + 's';
-            ember.style.animationDelay = (Math.random() * 3) + 's';
-            
-            // Random colors between Gold, Orange, and Red
-            let colors = ['#ff003c', '#ff5500', '#ffb300'];
-            ember.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            
-            particleContainer.appendChild(ember);
+        for (let i = 0; i < 30; i++) {
+            let dust = document.createElement('div');
+            dust.classList.add('gold-dust');
+            let size = Math.random() * 4 + 2; 
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = (Math.random() * 100) + 'vw';
+            dust.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            dust.style.animationDelay = (Math.random() * 5) + 's';
+            particleContainer.appendChild(dust);
         }
 
         function startLaunch() {
@@ -209,34 +198,30 @@
             
             let count = 10;
             const timerText = document.getElementById('timer-text');
-            timerText.classList.add('slam-anim');
+            timerText.classList.add('fade-scale');
 
+            // INCREASED LATENCY: Now runs every 1500ms (1.5 seconds) instead of 1000ms
             let countdownInterval = setInterval(() => {
                 count--;
                 if(count > 0) {
-                    timerText.classList.remove('slam-anim');
+                    timerText.classList.remove('fade-scale');
                     void timerText.offsetWidth; // Trigger reflow
                     timerText.innerText = count;
-                    
-                    // Change color to intense red for last 3 seconds
-                    if(count <= 3) { timerText.style.color = 'var(--neon-red)'; }
-                    
-                    timerText.classList.add('slam-anim');
+                    timerText.classList.add('fade-scale');
                 } else {
                     clearInterval(countdownInterval);
-                    timerText.classList.remove('slam-anim');
+                    timerText.classList.remove('fade-scale');
                     void timerText.offsetWidth;
                     
-                    timerText.innerText = "FIRE!";
-                    timerText.style.fontSize = "clamp(6rem, 20vw, 15rem)";
-                    timerText.classList.add('slam-anim');
+                    timerText.innerText = "LAUNCH";
+                    timerText.style.color = "var(--gold-primary)"; 
+                    timerText.style.fontSize = "clamp(3rem, 15vw, 8rem)";
+                    timerText.classList.add('fade-scale');
                     
-                    // Add mass shake to body
-                    document.body.classList.add('mass-shake');
-
-                    setTimeout(() => { triggerLaunchFinale(bgMusic); }, 800); 
+                    // Added a slight delay before the fireworks to let "LAUNCH" sink in
+                    setTimeout(() => { triggerLaunchFinale(bgMusic); }, 1200); 
                 }
-            }, 1000); 
+            }, 1500); // <-- This is the increased latency
         }
 
         function triggerLaunchFinale(bgMusic) {
@@ -246,44 +231,35 @@
 
             document.getElementById('countdown-screen').style.display = 'none';
             
-            // Extreme Flash
+            // Elegant Flash
             const flash = document.getElementById('flash');
             flash.style.opacity = '1';
-            flash.style.transition = 'opacity 0.05s ease-in';
+            flash.style.transition = 'opacity 0.1s ease-in';
 
-            launchMassFireworks();
+            launchElegantFireworks();
 
             setTimeout(() => {
-                document.body.classList.remove('mass-shake'); // Stop shaking
-                flash.style.transition = 'opacity 2s ease-out';
+                flash.style.transition = 'opacity 2.5s ease-out';
                 flash.style.opacity = '0';
                 
                 const postLaunch = document.getElementById('post-launch');
                 postLaunch.style.display = 'block';
-                
-                // Trigger reveal animations
-                document.getElementById('revealBox').classList.add('show-reveal');
-            }, 800); 
+                postLaunch.classList.add('show-reveal');
+            }, 500); 
         }
 
-        function launchMassFireworks() {
+        function launchElegantFireworks() {
             const fwContainer = document.getElementById('fireworks-container');
-            const fwColors = ['#ff003c', '#ffb300', '#ffffff']; // Red, Gold, White
+            const fwColors = ['#d4af37', '#fbeea1', '#ffffff', '#3b82f6']; // Gold, Light Gold, White, Royal Blue highlight
             
-            for(let b = 0; b < 25; b++) { // More bursts
+            for(let b = 0; b < 20; b++) { 
                 setTimeout(() => {
-                    let startX = Math.random() * 100;
-                    let startY = Math.random() * 60 + 20; 
+                    let startX = Math.random() * 90 + 5;
+                    let startY = Math.random() * 50 + 20; 
                     let burstColor = fwColors[Math.floor(Math.random() * fwColors.length)];
                     
-                    // Background flashing effect
-                    if(b % 4 === 0) {
-                        document.body.style.backgroundColor = "#330000";
-                        setTimeout(() => { document.body.style.backgroundColor = "var(--bg-pure)"; }, 100);
-                    }
-                    
                     let frag = document.createDocumentFragment();
-                    for(let s = 0; s < 40; s++) { // More sparks per burst
+                    for(let s = 0; s < 45; s++) { 
                         let spark = document.createElement('div');
                         spark.classList.add('fw-spark');
                         spark.style.left = startX + 'vw';
@@ -292,15 +268,15 @@
                         spark.style.boxShadow = `0 0 15px ${burstColor}`;
                         
                         let angle = Math.random() * Math.PI * 2;
-                        let distance = Math.random() * 400 + 100; // Shoot further
+                        let distance = Math.random() * 300 + 50; 
                         spark.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
                         spark.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
                         
                         frag.appendChild(spark);
-                        setTimeout(() => { spark.remove(); }, 1000);
+                        setTimeout(() => { spark.remove(); }, 1500);
                     }
                     fwContainer.appendChild(frag); 
-                }, b * 150); // Faster bursts
+                }, b * 200); 
             }
         }
     </script>
