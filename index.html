@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of GVHSS Moolamattom. Empowering minds and shaping the future with excellence in academics and vocational training.">
     
-    <title>GVHSS Moolamattom | Official Portal</title>
+    <title>GVHSS Moolamattom | Official Portal (Beta)</title>
     
     <!-- FAVICON (The Logo on the Browser Tab) -->
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png?v=2">
+    <link rel="apple-touch-icon" href="assets/logo.png?v=2">
 
     <!-- GOOGLE SEARCH META TAGS -->
     <meta property="og:site_name" content="GVHSS Moolamattom">
-    <meta property="og:title" content="GVHSS Moolamattom | Official Portal">
-    <meta property="og:description" content="Official website of GVHSS Moolamattom. Empowering minds and shaping the future with excellence in academics and vocational training.">
+    <meta property="og:title" content="GVHSS Moolamattom | Official Portal (Beta)">
+    <meta property="og:description" content="Official website of GVHSS Moolamattom. Empowering minds and shaping the future. Currently in Beta.">
     <meta property="og:image" content="assets/logo.png">
     <meta name="application-name" content="GVHSS Moolamattom">
     
@@ -58,7 +58,7 @@
             100% { transform: translateY(-10vh) rotate(360deg) scale(1.5); }
         }
 
-        /* --- UI CONTROLS (NAV & MUSIC) --- */
+        /* --- UI CONTROLS (NAV, MUSIC & BETA BADGE) --- */
         .controls-wrapper {
             position: fixed; top: 20px; right: 20px; z-index: 10000;
             display: flex; gap: 15px;
@@ -80,6 +80,17 @@
         .action-btn:hover { transform: translateY(-3px); background: var(--accent); box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3); }
         #musicBtn { position: fixed; bottom: 20px; left: 20px; z-index: 10000; }
         @media (min-width: 768px) { #musicBtn { bottom: 30px; left: 50px; } }
+
+        /* BETA BADGE */
+        .beta-badge {
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+            background: var(--card-bg); color: var(--accent); border: 2px solid var(--accent);
+            padding: 8px 16px; border-radius: 50px; font-weight: 800; font-size: 0.8rem;
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.2); pointer-events: none;
+            text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        @media (min-width: 768px) { .beta-badge { bottom: 30px; right: 50px; font-size: 0.9rem; padding: 10px 20px; } }
 
         .nav-links {
             position: fixed; top: 0; right: -100%; width: 100%; max-width: 350px; height: 100vh;
@@ -125,7 +136,8 @@
             margin-bottom: 2rem;
         }
         .hero-title { font-family: 'Playfair Display', serif; margin: 0; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--primary); font-weight: 900; line-height: 1.1; }
-        .hero-subtitle { margin: 15px 0 0 0; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--accent); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+        .hero-subtitle { margin: 15px 0 0 0; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--primary-light); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+        .hero-beta-text { margin: 15px 0 0 0; font-size: 0.9rem; color: var(--accent); font-weight: 700; background: rgba(244, 63, 94, 0.1); padding: 8px 20px; border-radius: 50px; display: inline-block;}
 
         /* --- FULL WIDTH STATS BACKGROUND --- */
         .stats-wrapper { background: var(--primary); color: white; padding: 4rem 0; margin-bottom: 3rem; }
@@ -255,7 +267,13 @@
     <div class="controls-wrapper">
         <button class="action-btn" id="hamburger-icon" aria-label="Toggle Menu" onclick="toggleMenu()">&#9776;</button>
     </div>
+    
     <button class="action-btn" id="musicBtn" aria-label="Toggle Music" onclick="toggleMusic()">🔇</button>
+    
+    <!-- FLOATING BETA BADGE -->
+    <div class="beta-badge">
+        🚧 Beta Version
+    </div>
 
     <!-- SIDE NAVIGATION -->
     <nav class="nav-links" id="navLinks">
@@ -276,6 +294,7 @@
             <img src="assets/logo.png" alt="School Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/160?text=LOGO'">
             <h1 class="hero-title">GVHSS Moolamattom</h1>
             <h2 class="hero-subtitle">Empowering Minds</h2>
+            <div class="hero-beta-text">Under Development - More Features Coming Soon!</div>
         </div>
     </header>
 
